@@ -1,5 +1,6 @@
 package org.smartregister.anc.library.activity;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -20,6 +21,7 @@ import org.smartregister.anc.library.domain.YamlConfigWrapper;
 import org.smartregister.anc.library.presenter.PreviousContactTestsPresenter;
 import org.smartregister.anc.library.util.ConstantsUtils;
 import org.smartregister.anc.library.util.DBConstantsUtils;
+import org.smartregister.anc.library.util.LocaleHelper;
 import org.smartregister.anc.library.util.Utils;
 
 import java.io.IOException;
@@ -63,6 +65,11 @@ public class PreviousContactsTestsActivity extends AppCompatActivity implements 
         } catch (ParseException | IOException e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(LocaleHelper.onAttach(base));
     }
 
     protected int getViewLayoutId() {

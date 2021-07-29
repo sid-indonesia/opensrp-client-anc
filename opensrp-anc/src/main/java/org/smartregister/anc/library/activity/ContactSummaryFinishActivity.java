@@ -1,5 +1,6 @@
 package org.smartregister.anc.library.activity;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -23,6 +24,7 @@ import org.smartregister.anc.library.task.LoadContactSummaryDataTask;
 import org.smartregister.anc.library.util.ANCFormUtils;
 import org.smartregister.anc.library.util.ConstantsUtils;
 import org.smartregister.anc.library.util.FilePathUtils;
+import org.smartregister.anc.library.util.LocaleHelper;
 import org.smartregister.anc.library.util.Utils;
 import org.smartregister.helper.ImageRenderHelper;
 
@@ -60,6 +62,11 @@ public class ContactSummaryFinishActivity extends BaseProfileActivity implements
         imageRenderHelper = new ImageRenderHelper(this);
         loadContactSummaryData();
 
+    }
+
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(LocaleHelper.onAttach(base));
     }
 
     private void setUpViews() {

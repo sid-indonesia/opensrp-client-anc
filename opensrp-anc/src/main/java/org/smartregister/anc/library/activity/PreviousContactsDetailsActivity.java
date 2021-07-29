@@ -1,5 +1,6 @@
 package org.smartregister.anc.library.activity;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -30,6 +31,7 @@ import org.smartregister.anc.library.presenter.PreviousContactDetailsPresenter;
 import org.smartregister.anc.library.util.ConstantsUtils;
 import org.smartregister.anc.library.util.DBConstantsUtils;
 import org.smartregister.anc.library.util.FilePathUtils;
+import org.smartregister.anc.library.util.LocaleHelper;
 import org.smartregister.anc.library.util.Utils;
 
 import java.io.IOException;
@@ -99,6 +101,11 @@ public class PreviousContactsDetailsActivity extends AppCompatActivity implement
             Log.e(TAG, Log.getStackTraceString(e));
         }
 
+    }
+
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(LocaleHelper.onAttach(base));
     }
 
     protected int getViewLayoutId() {

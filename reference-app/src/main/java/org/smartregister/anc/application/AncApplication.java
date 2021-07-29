@@ -20,6 +20,7 @@ import org.smartregister.anc.job.AncJobCreator;
 import org.smartregister.anc.library.AncLibrary;
 import org.smartregister.anc.library.sync.BaseAncClientProcessorForJava;
 import org.smartregister.anc.library.util.DBConstantsUtils;
+import org.smartregister.anc.library.util.LocaleHelper;
 import org.smartregister.anc.library.util.Utils;
 import org.smartregister.anc.repository.AncRepository;
 import org.smartregister.commonregistry.CommonFtsObject;
@@ -141,7 +142,7 @@ public class AncApplication extends DrishtiApplication implements TimeChangedBro
 
     @Override
     protected void attachBaseContext(android.content.Context base) {
-        super.attachBaseContext(base);
+        super.attachBaseContext(LocaleHelper.onAttach(base, BuildConfig.LOCALE));
     }
 
     @Override
