@@ -1,5 +1,6 @@
 package org.smartregister.anc.activity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -13,6 +14,7 @@ import org.smartregister.anc.library.activity.BaseHomeRegisterActivity;
 import org.smartregister.anc.library.activity.SiteCharacteristicsEnterActivity;
 import org.smartregister.anc.library.event.ViewConfigurationSyncCompleteEvent;
 import org.smartregister.anc.library.util.ConstantsUtils;
+import org.smartregister.anc.library.util.LocaleHelper;
 import org.smartregister.anc.library.util.Utils;
 import org.smartregister.anc.presenter.LoginPresenter;
 import org.smartregister.task.SaveTeamLocationsTask;
@@ -39,6 +41,11 @@ public class LoginActivity extends BaseLoginActivity implements BaseLoginContrac
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setUpViews();
+    }
+
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(LocaleHelper.onAttach(base));
     }
 
     private void setUpViews() {

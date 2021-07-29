@@ -1,5 +1,6 @@
 package org.smartregister.anc.library.activity;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -10,6 +11,7 @@ import androidx.appcompat.widget.Toolbar;
 import org.apache.commons.lang3.StringUtils;
 import org.smartregister.anc.library.R;
 import org.smartregister.anc.library.util.ConstantsUtils;
+import org.smartregister.anc.library.util.LocaleHelper;
 
 public class LibraryContentActivity extends AppCompatActivity {
     private TextView toolbarHeaderTextview;
@@ -29,6 +31,11 @@ public class LibraryContentActivity extends AppCompatActivity {
         }
         updateTheToolbarHeader();
         toggleViews();
+    }
+
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(LocaleHelper.onAttach(base));
     }
 
     private void setUpViews() {
