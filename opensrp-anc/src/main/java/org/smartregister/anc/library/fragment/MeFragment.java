@@ -18,8 +18,8 @@ import org.smartregister.anc.library.R;
 import org.smartregister.anc.library.activity.PopulationCharacteristicsActivity;
 import org.smartregister.anc.library.activity.SiteCharacteristicsActivity;
 import org.smartregister.anc.library.presenter.MePresenter;
+import org.smartregister.anc.library.util.LocaleHelper;
 import org.smartregister.anc.library.util.Utils;
-import org.smartregister.util.LangUtils;
 import org.smartregister.view.activity.DrishtiApplication;
 import org.smartregister.view.contract.MeContract;
 
@@ -128,7 +128,7 @@ public class MeFragment extends org.smartregister.view.fragment.MeFragment imple
         if (MeFragment.this.getActivity() != null && StringUtils.isNotBlank(selectedLanguage)) {
             Locale selectedLanguageLocale = locales.get(selectedLanguage);
             if (selectedLanguageLocale != null) {
-                LangUtils.saveLanguage(MeFragment.this.getActivity().getApplication(), getFullLanguage(selectedLanguageLocale));
+                LocaleHelper.setLanguage(getActivity().getApplication(), getFullLanguage(selectedLanguageLocale));
             } else {
                 Timber.i("Language could not be set");
             }
@@ -168,7 +168,8 @@ public class MeFragment extends org.smartregister.view.fragment.MeFragment imple
     private void addLanguages() {
         locales.put(getString(R.string.english_language), Locale.ENGLISH);
         //locales.put(getString(R.string.french_language), Locale.FRENCH);
-        locales.put(getString(R.string.portuguese_brazil_language), new Locale("pt"));
+        locales.put(getString(R.string.indonesian_language), new Locale("in"));
+        //locales.put(getString(R.string.portuguese_brazil_language), new Locale("pt"));
     }
 
 }

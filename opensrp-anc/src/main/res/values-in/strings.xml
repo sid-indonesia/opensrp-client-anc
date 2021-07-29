@@ -426,5 +426,6 @@
     <string name="choose_language">Pilih bahasa</string>
     <string name="english_language">Inggris</string>
     <string name="french_language">Perancis</string>
+    <string name="indonesian_language">Indonesia</string>
     <string name="portuguese_brazil_language">Portugis (Brazil)</string>
 </resources>
