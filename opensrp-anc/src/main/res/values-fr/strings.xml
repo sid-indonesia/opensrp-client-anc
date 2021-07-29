@@ -17,7 +17,6 @@
     <string name="complete">Terminé</string>
     <string name="updating_dialog_title">Mise a jour en cours ...</string>
     <string name="remove_from_register">Supprimer du Registre</string>
-    <string name="url_separator">/</string>
     <string name="events_key">événements</string>
     <string name="sync">Synchro</string>
     <string name="sync_round_complete">Synchronisation est terminé&#8230;</string>

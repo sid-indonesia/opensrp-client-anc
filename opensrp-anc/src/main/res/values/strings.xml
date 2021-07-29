@@ -19,7 +19,6 @@
     <string name="patient_location">Location: %1$s</string>
     <string name="dose_given_date">Dose %1$s given %2$s</string>
 
-
     <string name="unauthorized">Please check the credentials</string>
     <string name="unauthorized_group">Your user group is not allowed to access this device</string>
     <string name="unknown_response">login failed. Try later</string>
@@ -29,7 +28,6 @@
     <string name="complete">Complete</string>
     <string name="updating_dialog_title">Updating…</string>
     <string name="remove_from_register">REMOVE FROM REGISTER</string>
-    <string name="url_separator">/</string>
     <string name="clients_key">clients</string>
     <string name="events_key">events</string>
     <string name="sync">Sync</string>
@@ -58,6 +56,14 @@
     <string name="error_field_required">This field is required</string>
     <string name="registration_info">Registration info</string>
 
+    <!-- Menus -->
+    <string name="search_menu">Search</string>
+    <string name="register_menu">Register</string>
+    <string name="library_menu">Library</string>
+
+    <!-- Menu - Me -->
+    <string name="log_out_text">Logout</string>
+
     <!-- register -->
     <string name="opensrp_id">OpenSRP ID</string>
     <string name="anc">WHO ANC</string>
@@ -80,7 +86,7 @@
     <string name="first_name_z_to_a">First name (Z to A)</string>
     <string name="last_name_a_to_z">Last name (A to Z)</string>
     <string name="last_name_z_to_a">Last name (Z to A)</string>
-    <string name="no_location_picker">No location selected </string>
+    <string name="no_location_picker">No location selected</string>
 
     <!-- advanced search -->
     <string name="advanced_search">Advanced Search</string>
@@ -113,11 +119,10 @@
     <string name="sync_data">Sync data</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="antenatal_care_module">Antenatal Care \n Module</string>
+    <string name="antenatal_care_module">Antenatal Care Module</string>
     <string name="anc_id_text">ID: %1$s</string>
     <string name="age_text">Age: %1$s</string>
     <string name="ga_text">GA: %1$d weeks</string>
-    <string name="bullet">\u2022</string>
 
     <string name="overview">OVERVIEW</string>
     <string name="contacts">CONTACTS</string>
@@ -146,13 +151,13 @@
     <string name="clients_menu">Clients</string>
     <string name="_0_clients_sort_updated">0 Clients (Sort: updated)</string>
 
-    <string name="reason_for_coming_facility"><font fgcolor="black">Reason for coming to facility? </font><font fgcolor="red">*</font></string>
+    <string name="reason_for_coming_facility"><font fgcolor="black">Reason for coming to facility?</font><font fgcolor="red">*</font></string>
 
     <string name="first_contact">First contact</string>
     <string name="scheduled_contact">Scheduled contact</string>
     <string name="specific_complaint">Specific complaint</string>
 
-    <string name="specific_complaints"><font fgcolor="black">Specific complaint(s) </font><font fgcolor="red">*</font></string>
+    <string name="specific_complaints"><font fgcolor="black">Specific complaint(s)</font><font fgcolor="red">*</font></string>
 
     <string name="abnormal_discharge">Abnormal vaginal discharge</string>
     <string name="altered_skin_color">Altered skin colour</string>
@@ -192,7 +197,7 @@
     <string name="visual_disturbance">Visual disturbance</string>
     <string name="complaint_other_specify">Other</string>
 
-    <string name="danger_signs"><font fgcolor="black">Danger signs </font><font fgcolor="red">*</font></string>
+    <string name="danger_signs"><font fgcolor="black">Danger signs</font><font fgcolor="red">*</font></string>
 
     <string name="danger_none">None</string>
     <string name="danger_bleeding">Bleeding vaginally</string>
@@ -234,7 +239,7 @@
     <string name="your_site_characteristics_for_facility_name">Your site characteristics for %1$s are all set.</string>
     <string name="site_characteristics_are_shared_for_all">Site characteristics are shared by all OpenSRP users at the facility. You can update site characteristics at any time.</string>
     <string name="go_back_to_site_characteristics">Go back to site characteristics</string>
-    <string name="edit"> edit </string>
+    <string name="edit">edit</string>
 
     <!-- contact -->
     <string name="quick_check">Quick Check</string>
@@ -257,7 +262,7 @@
     <string name="discard_contact">Ignore changes</string>
     <string name="close_without_saving">Close without saving\nLose updates you\'ve made in\nthis contact</string>
 
-    <string name="me_page_location_text">Location: </string>
+    <string name="me_page_location_text">Location:</string>
     <string name="right_arrow">Right Arrow</string>
     <string name="section_icon">Section Icon</string>
     <string name="settings">Settings</string>
@@ -277,7 +282,7 @@
     <string name="woman_name">Woman Name</string>
     <string name="contact_weeks">START\nCONTACT %1$s\n%2$s</string>
     <string name="contact_weeks_no_break">START &#183; CONTACT %1$s &#183; %2$s</string>
-    <string name="contact_in_progress">CONTACT %1$s\n IN PROGRESS</string>
+    <string name="contact_in_progress">CONTACT %1$s IN PROGRESS</string>
     <string name="contact_in_progress_no_break">CONTACT %1$s &#183; IN PROGRESS</string>
     <string name="due_delivery">DUE\nDELIVERY</string>
     <string name="record_birth_popup_message">GA: %1$d weeks\nEDD: %2$s (%3$s ago)\n\n%4$s should come in immediately for delivery.</string>
@@ -289,14 +294,14 @@
     <string name="undo">Undo</string>
     <string name="save_and_finish">SAVE + FINISH</string>
     <string name="reason_for_visit">REASON FOR VISIT</string>
-    <string name="contact_recorded_today">CONTACT %1$d\n DONE TODAY</string>
-    <string name="contact_recorded_today_no_break"> CONTACT %1$d &#183; DONE TODAY</string>
+    <string name="contact_recorded_today">CONTACT %1$d\nDONE TODAY</string>
+    <string name="contact_recorded_today_no_break">CONTACT %1$d &#183; DONE TODAY</string>
     <string name="continue_contact">Continue Contact %1$d</string>
     <string name="username">Username</string>
     <string name="password">Password</string>
     <string name="finalizing_contact">Finalizing Contact %1$d</string>
     <string name="summarizing_contact_number">Summarizing Contact %1$d</string>
-    <string name="contact_number_due">CONTACT %1$d\n DUE \n %2$s</string>
+    <string name="contact_number_due">CONTACT %1$d\nDUE\n%2$s</string>
     <string name="contact_number_due_no_break">CONTACT %1$d &#183; DUE &#183; %2$s</string>
     <string name="last_contact">LAST CONTACT</string>
     <string name="key_figure">KEY FIGURES</string>
@@ -329,8 +334,6 @@
     <string name="balanced_nutrition">Balanced Nutrition</string>
 
     <string name="balanced_nutrition_source">SOURCE: World Health Organization. Integrated Management of Pregnancy and Childbirth – Pregnancy, Childbirth, Postpartum and Newborn Care: A guide for essential practice. 2015. Geneva.</string>
-    <string name="string_bullet">•</string>
-    <string name="birth_and_emergency"></string>
     <string name="develop_a_birth_and_emergency_plan_header">Develop a birth and emergency plan</string>
     <string name="facility_delivery_header">Facility delivery</string>
     <string name="explain_why_birth_in_a_facility_is_recommended">Explain why birth in a facility is recommended</string>
@@ -424,4 +427,9 @@
     <string name="english_language">English</string>
     <string name="french_language">French</string>
     <string name="portuguese_brazil_language">Portuguese (Brazil)</string>
+
+    <!-- Non Translatable -->
+    <string name="url_separator" translatable="false">/</string>
+    <string name="bullet" translatable="false">\u2022</string>
+    <string name="string_bullet" translatable="false">•</string>
 </resources>

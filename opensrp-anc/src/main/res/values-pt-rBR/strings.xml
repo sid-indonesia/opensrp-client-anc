@@ -29,7 +29,6 @@
     <string name="complete">Completo</string>
     <string name="updating_dialog_title">Atualizando...</string>
     <string name="remove_from_register">REMOVER DOS REGISTROS</string>
-    <string name="url_separator">/</string>
     <string name="clients_key">clientes</string>
     <string name="events_key">eventos</string>
     <string name="sync">Sincronizar</string>
@@ -117,7 +116,6 @@
     <string name="anc_id_text">N° Registro: %1$s</string>
     <string name="age_text">Idade: %1$s</string>
     <string name="ga_text">IG: %1$d semanas</string>
-    <string name="bullet">\u2022</string>
 
     <string name="overview">VISÃO GERAL</string>
     <string name="contacts">CONTATOS</string>
@@ -328,7 +326,6 @@
     <string name="balanced_nutrition">Nutrição Balanceada</string>
 
     <string name="balanced_nutrition_source">Fonte: World Health Organization. Integrated Management of Pregnancy and Childbirth – Pregnancy, Childbirth, Postpartum and Newborn Care: A guide for essential practice. 2015. Geneva.</string>
-    <string name="string_bullet">•</string>
     <string name="birth_and_emergency"></string>
     <string name="develop_a_birth_and_emergency_plan_header">Desenvolva um plano de parto e emergência</string>
     <string name="facility_delivery_header">Parto na unidade de saúde</string>
