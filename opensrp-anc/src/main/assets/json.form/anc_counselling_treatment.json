@@ -4216,6 +4216,100 @@
         }
       },
       {
+        "key": "mm_supp",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "",
+        "openmrs_entity_id": "",
+        "type": "native_radio",
+        "label": "{{anc_counselling_treatment.step9.mm_supp.label}}",
+        "label_info_title": "{{anc_counselling_treatment.step9.mm_supp.label_info_title}}",
+        "label_text_style": "bold",
+        "options": [
+          {
+            "key": "done",
+            "text": "{{anc_counselling_treatment.step9.mm_supp.options.done.text}}",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "",
+            "openmrs_entity_id": ""
+          },
+          {
+            "key": "not_done",
+            "text": "{{anc_counselling_treatment.step9.mm_supp.options.not_done.text}}",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "",
+            "openmrs_entity_id": ""
+          }
+        ],
+        "v_required": {
+          "value": true,
+          "err": "{{anc_counselling_treatment.step9.mm_supp.v_required.err}}"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "ct_relevance_rules.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "mm_supp_notdone",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "",
+        "openmrs_entity_id": "",
+        "openmrs_data_type": "",
+        "type": "check_box",
+        "label": "{{anc_counselling_treatment.step9.mm_supp_notdone.label}}",
+        "hint": "{{anc_counselling_treatment.step9.mm_supp_notdone.hint}}",
+        "label_text_style": "bold",
+        "options": [
+          {
+            "key": "referred_instead",
+            "text": "{{anc_counselling_treatment.step9.mm_supp_notdone.options.referred_instead.text}}",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "",
+            "openmrs_entity_id": ""
+          },
+          {
+            "key": "other",
+            "text": "{{anc_counselling_treatment.step9.mm_supp_notdone.options.other.text}}",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "",
+            "openmrs_entity_id": ""
+          }
+        ],
+        "v_required": {
+          "value": true,
+          "err": "{{anc_counselling_treatment.step9.mm_supp_notdone.v_required.err}}"
+        },
+        "relevance": {
+          "step9:mm_supp": {
+            "type": "string",
+            "ex": "equalTo(., \"not_done\")"
+          }
+        }
+      },
+      {
+        "key": "mm_supp_notdone_other",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "",
+        "openmrs_entity_id": "",
+        "type": "edit_text",
+        "hint": "{{anc_counselling_treatment.step9.mm_supp_notdone_other.hint}}",
+        "edit_type": "name",
+        "relevance": {
+          "step9:mm_supp_notdone": {
+            "ex-checkbox": [
+              {
+                "or": [
+                  "other"
+                ]
+              }
+            ]
+          }
+        }
+      },
+      {
         "key": "ifa_low_prev",
         "openmrs_entity_parent": "165356AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
         "openmrs_entity": "concept",
