@@ -760,7 +760,6 @@
 
     <string name="allow_camera_management">Anda harus mengizinkan aplikasi menggunakan kamera untuk memindai kode QR&#8230;</string>
     <string name="unauthorized_group">Grup pengguna Anda tidak diizinkan untuk mengakses perangkat ini</string>
-    <string name="opensrp_url">http://27.147.129.50:9979</string>
     <string name="no_internet_connectivity">Tidak ada jaringan internet. Silakan periksa konektifitas anda</string>
     <string name="unknown_response">Gagal masuk. Silakan coba beberapa saat lagi </string>
     <string name="unauthorized">Periksa kembali kredensial</string>
