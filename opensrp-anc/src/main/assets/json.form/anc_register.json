@@ -243,11 +243,11 @@
         },
         "v_min": {
           "value": "10",
-          "err": "Age must be equal to or greater than 10"
+          "err": "{{anc_register.step1.age_entered.v_min.err}}"
         },
         "v_max": {
           "value": "49",
-          "err": "Age must be equal or less than 49"
+          "err": "{{anc_register.step1.age_entered.v_max.err}}"
         },
         "relevance": {
           "step1:dob_unknown": {

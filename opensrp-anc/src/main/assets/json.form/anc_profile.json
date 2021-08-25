@@ -575,15 +575,15 @@
         },
         "v_numeric_integer": {
           "value": true,
-          "err": "Enter a Valid GA from ultrasound - weeks value"
+          "err": "{{anc_profile.step2.ultrasound_gest_age_wks.v_numeric_integer.err}}"
         },
         "v_min": {
           "value": "4",
-          "err": "GA from ultrasound - weeks should be equal to or greater than 4"
+          "err": "{{anc_profile.step2.ultrasound_gest_age_wks.v_min.err}}"
         },
         "v_max": {
           "value": "40",
-          "err": "GA from ultrasound - weeks should be less than or equal to 40"
+          "err": "{{anc_profile.step2.ultrasound_gest_age_wks.v_max.err}}"
         }
       },
       {
@@ -605,15 +605,15 @@
         },
         "v_numeric_integer": {
           "value": true,
-          "err": "Enter a Valid GA from ultrasound - days value"
+          "err": "{{anc_profile.step2.ultrasound_gest_age_days.v_numeric_integer.err}}"
         },
         "v_min": {
           "value": "1",
-          "err": "GA from ultrasound - days should be equal to or greater than 1"
+          "err": "{{anc_profile.step2.ultrasound_gest_age_days.v_min.err}}"
         },
         "v_max": {
           "value": "6",
-          "err": "GA from ultrasound - days should be less than or equal to 6"
+          "err": "{{anc_profile.step2.ultrasound_gest_age_days.v_max.err}}"
         }
       },
       {
@@ -701,15 +701,15 @@
         },
         "v_numeric_integer": {
           "value": true,
-          "err": "Enter a Valid GA from SFH or abdominal palpation - weeks value"
+          "err": "{{anc_profile.step2.sfh_gest_age.v_numeric_integer.err}}"
         },
         "v_min": {
           "value": "4",
-          "err": "GA from SFH or abdominal palpation - weeks should 4 or greater"
+          "err": "{{anc_profile.step2.sfh_gest_age.v_min.err}}"
         },
         "v_max": {
           "value": "40",
-          "err": "GA from SFH or abdominal palpation - weeks should be 40 or less"
+          "err": "{{anc_profile.step2.sfh_gest_age.v_max.err}}"
         },
         "relevance": {
           "rules-engine": {

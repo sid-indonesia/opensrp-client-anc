@@ -272,11 +272,11 @@
         },
         "v_min": {
           "value": "0.1",
-          "err": "Birth weight must be greater than 0"
+          "err": "{{anc_close.step1.birthweight.v_min.err}}"
         },
         "v_max": {
           "value": "10",
-          "err": "Birth weight must be less than or equal to 10"
+          "err": "{{anc_close.step1.birthweight.v_max.err}}"
         },
         "v_numeric": {
           "value": "true",
