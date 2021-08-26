@@ -507,8 +507,8 @@
           {
             "key": "central_cyanosis",
             "text": "{{anc_quick_check.step1.danger_signs.options.central_cyanosis.text}}",
-            "label_info_text": "Bluish discolouration around the mucous membranes in the mouth, lips and tongue",
-            "label_info_title": "Central cyanosis",
+            "label_info_text": "{{anc_quick_check.step1.danger_signs.options.central_cyanosis.label_info_text}}",
+            "label_info_title": "{{anc_quick_check.step1.danger_signs.options.central_cyanosis.label_info_title}}",
             "value": false,
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
