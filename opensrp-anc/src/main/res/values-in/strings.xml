@@ -17,6 +17,7 @@
     <string name="id">Identitas</string>
     <string name="patient_location">Lokasi: %1$s</string>
     <string name="dose_given_date">Dosis %1$s yang diberikan %2$s</string>
+    <string name="attention_flags">Bendera Risiko</string>
 
     <string name="complete">Selesai</string>
     <string name="updating_dialog_title">Memperbarui</string>
