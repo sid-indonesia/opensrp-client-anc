@@ -733,8 +733,8 @@
     <string name="search_hint">Cari nama atau nomor identitas</string>
     <string name="_0_clients_sort_updated">0 Pasien (Sortir: diperbarui)</string>
     <string name="no_record">Tidak ada catatan</string>
-    <string name="clients">%1$dPasien-Pasien</string>
-    <string name="client">%1$dPasien</string>
+    <string name="clients">%1$d pasien</string>
+    <string name="client">%1$d pasien</string>
     <string name="library_placeholder">Tempat daftar pustaka</string>
     <string name="service_location">Lokasi Layanan</string>
     <string name="section_icon">Ikon bagian</string>
