@@ -1466,7 +1466,7 @@
           {
             "key": "3",
             "text": "{{anc_physical_exam.step3.respiratory_exam.options.3.text}}",
-            "specify_info": "specify...",
+            "specify_info": "{{anc_physical_exam.step3.respiratory_exam.options.3.specify_info}}",
             "specify_widget": "check_box",
             "specify_info_color": "#8C8C8C",
             "content_form": "respiratory_exam_sub_form",
@@ -1575,7 +1575,7 @@
           {
             "key": "3",
             "text": "{{anc_physical_exam.step3.cardiac_exam.options.3.text}}",
-            "specify_info": "specify...",
+            "specify_info": "{{anc_physical_exam.step3.cardiac_exam.options.3.specify_info}}",
             "specify_widget": "check_box",
             "specify_info_color": "#8C8C8C",
             "content_form": "cardiac_exam_sub_form",
@@ -1639,7 +1639,7 @@
           {
             "key": "3",
             "text": "{{anc_physical_exam.step3.breast_exam.options.3.text}}",
-            "specify_info": "specify...",
+            "specify_info": "{{anc_physical_exam.step3.breast_exam.options.3.specify_info}}",
             "specify_widget": "check_box",
             "specify_info_color": "#8C8C8C",
             "content_form": "breast_exam_sub_form",
@@ -1703,7 +1703,7 @@
           {
             "key": "3",
             "text": "{{anc_physical_exam.step3.abdominal_exam.options.3.text}}",
-            "specify_info": "specify...",
+            "specify_info": "{{anc_physical_exam.step3.abdominal_exam.options.3.specify_info}}",
             "specify_widget": "check_box",
             "specify_info_color": "#8C8C8C",
             "content_form": "abdominal_exam_sub_form",
@@ -1767,7 +1767,7 @@
           {
             "key": "3",
             "text": "{{anc_physical_exam.step3.pelvic_exam.options.3.text}}",
-            "specify_info": "specify...",
+            "specify_info": "{{anc_physical_exam.step3.pelvic_exam.options.3.specify_info}}",
             "specify_widget": "check_box",
             "specify_info_color": "#8C8C8C",
             "content_form": "pelvic_exam_sub_form",
@@ -1820,7 +1820,7 @@
             "openmrs_entity_parent": "165374AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
             "openmrs_entity": "",
             "openmrs_entity_id": "1267AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-            "specify_info": "specify cm cervix dilated...",
+            "specify_info": "{{anc_physical_exam.step3.cervical_exam.options.1.specify_info}}",
             "specify_widget": "normal_edit_text",
             "specify_info_color": "#8C8C8C",
             "secondary_suffix": "cm",
@@ -1894,7 +1894,7 @@
           {
             "key": "yes",
             "text": "{{anc_physical_exam.step3.oedema.options.yes.text}}",
-            "specify_info": "specify type...",
+            "specify_info": "{{anc_physical_exam.step3.oedema.options.yes.specify_info}}",
             "specify_widget": "radio_button",
             "specify_info_color": "#8C8C8C",
             "content_form": "oedema_present_sub_form",
