@@ -36,6 +36,11 @@
     <string name="device_timezone_changed">"The device's timezone changed. Please login again."</string>
     <string name="device_time_changed">"The device's time has changed. Please login again."</string>
 
+    <string name="server">Server</string>
+    <string name="enter_base_server_url">Enter Base Server Url</string>
+    <string name="opensrp_base_url">OpenSRP base URL</string>
+    <string name="defines_the_base_server_url_that_handles_requests">Defines the base server url that handles requests</string>
+
     <!-- sync -->
     <string name="sync_failed_no_internet">Sync failed. Check your internet connection.</string>
     <string name="syncing">Syncing...</string>

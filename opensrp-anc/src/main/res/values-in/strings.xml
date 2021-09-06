@@ -27,6 +27,11 @@
     <string name="device_timezone_changed">Zona waktu perangkat berubah. Silakan masuk lagi.</string>
     <string name="device_time_changed">Waktu perangkat berubah. Silakan masuk lagi.</string>
 
+    <string name="server">Server</string>
+    <string name="enter_base_server_url">Masukkan Base Server Url</string>
+    <string name="opensrp_base_url">Base URL OpenSRP</string>
+    <string name="defines_the_base_server_url_that_handles_requests">Tetapkan base url server yang menangani permintaan</string>
+
     <!-- sync -->
     <string name="retry">Coba lagi</string>
     <string name="sync_">Sinkronisasi %1$s</string>

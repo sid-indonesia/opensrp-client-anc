@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-    <PreferenceCategory android:title="Server">
+    <PreferenceCategory android:title="@string/server">
         <EditTextPreference
             android:defaultValue="@string/opensrp_url"
-            android:dialogMessage="Enter Base Server Url"
-            android:dialogTitle="OpenSRP base URL"
+            android:dialogMessage="@string/enter_base_server_url"
+            android:dialogTitle="@string/opensrp_base_url"
             android:key="DRISHTI_BASE_URL"
             android:persistent="true"
-            android:summary="Defines the base server url that handles requests"
-            android:title="OpenSRP base URL" />
+            android:summary="@string/defines_the_base_server_url_that_handles_requests"
+            android:title="@string/opensrp_base_url" />
     </PreferenceCategory>
 </PreferenceScreen>
