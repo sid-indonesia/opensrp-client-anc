@@ -797,4 +797,87 @@
     <string name="x_years">%1$dy</string>
     <string name="x_years_months">%1$dy %2$dm</string>
     <!-- END - Imported from core client -->
+
+    <!-- BEGIN - Imported from native form -->
+    <string name="action_settings">Pengaturan</string>
+    <string name="badly_formed_date">Badly formed date</string>
+    <string name="badly_formed_time">Badly formed time</string>
+    <string name="confirm_form_close">Konfirmasi Tutup Formulir</string>
+    <string name="confirm_form_close_explanation">Apakah Anda yakin ingin kembali? Semua data yang Anda masukkan dalam formulir ini akan dihapus.</string>
+    <string name="record_location">Record Location</string>
+    <string name="latitude">Garis lintang: %s</string>
+    <string name="longitude">Garis bujur: %s</string>
+    <string name="altitude">Ketinggian: %s</string>
+    <string name="accuracy">Akurasi: %s</string>
+    <string name="loading_location">Memuat Lokasi</string>
+    <string name="could_not_get_your_location">Tidak bisa mendapatkan lokasi GPS</string>
+    <string name="using_provider">Using %s provider</string>
+    <string name="unknown_gps_accuracy">Akurasi tidak diketahui</string>
+    <string name="required">*</string>
+    <string name="info_label">Info Label</string>
+    <string name="label_text_string">%1$s %2$s</string>
+    <string name="the_toaster_icon">The toaster icon</string>
+    <string name="asterisks">*</string>
+    <string name="save">Simpan</string>
+    <string name="radio_button_tap_to_change">Ketuk untuk mengubah</string>
+    <string name="select_one">Pilih salah satu angka</string>
+    <string name="please_wait_title">Mohon tunggu</string>
+    <string name="creating_repeating_group_title">Mohon tunggu</string>
+    <string name="creating_repeating_group_message">Creating Repeating Group</string>
+    <string name="launching_rdt_capture_message">Launching RDT capture widget</string>
+    <string name="repeating_group_max_value_err_msg">The number of repeating groups cannot be greater than %1$d</string>
+    <string name="repeating_group_min_value_err_msg">The number of repeating groups must greater than %1$d</string>
+    <string name="repeating_group_number_format_err_msg">The number of repeating groups must be an integer value</string>
+    <string name="enter_number_of_repeating_group_items">Enter # of repeating group items</string>
+    <string name="repeating_group_item">Item</string>
+    <string name="repeating_group_label">repeating_group_label</string>
+
+    <string-array name="spinnerItems">
+    </string-array>
+
+    <!--The barcode strings-->
+    <string name="please_specify_content">Mohon tentukan konten yang akan ditampilkan oleh pop up&#8230;</string>
+    <string name="previous">Sebelumnya</string>
+    <string name="next">Selanjutnya</string>
+    <string name="submit">Kirim</string>
+    <string name="the_extra_info_icon">The extra info icon</string>
+    <string name="edit_button_label">Tombol sunting</string>
+    <string name="info_icon">Info ikon</string>
+    <string name="attention">Perhatian</string>
+    <string name="json_form_error_msg">Menemukan %d kesalahan dalam formulir. Mohon benarkan agar dapat dikirim.</string>
+    <string name="json_form_on_next_error_msg">Mohon benarkan kesalahan dalam formulir untuk melanjutkan.</string>
+    <string name="go_to_step">Go to Step</string>
+    <string name="shows_image_on_dialog">Shows image on dialog</string>
+    <string name="simprints_guid">GUID tidak ditemukan</string>
+    <string name="simprints_init_fail">Project id, user id or module id were not found. Please use SimprintsLibrary.init</string>
+    <string name="permission_denied_title">Izin ditolak</string>
+    <string name="permission_messege">Aplikasi memerlukan izin ini untuk menangkap informasi perangkat yang diperlukan saat mengirimkan formulir. Tanpa izin ini, aplikasi tidak akan berfungsi dengan baik. Apakah Anda yakin ingin menolak izin ini?</string>
+    <string name="multiselect_msg_on_item_added">Ditambahkan</string>
+    <string name="loading_multi_select_list">Memuat</string>
+    <string name="loading">Memuat</string>
+    <string name="loading_form_message">Mohon tunggu, saat ini sedang memuat formulir anda...</string>
+    <string name="opening_forms">Memuat sub formulir...</string>
+    <string name="multiselect_already_added_msg">%s sudah ditambahkan</string>
+    <string name="multi_select_list_msg_data_source_invalid">External DataSource not found or processed</string>
+    <string name="next_step_loading">Mohon tunggu, sedang mempersiapkan langkah selanjutnya.</string>
+    <!-- Duration -->
+    <string name="repeating_group_not_generated_error_message">Please click the &#9989; button to generate the questions</string>
+
+    <string name="form_update_title">Form Update</string>
+    <string name="form_update_message">This form has content updates</string>
+    <string name="form_changed_reopen_to_take_effect">Form has been successfully selected! Reopen this form for the changes to take effect</string>
+    <string name="rollback_dialog_title">Select a rollback form</string>
+    <string name="current_corrupted_form">(Current Corrupted Form)</string>
+    <string name="cannot_select_corrupted_form_rollback">You cannot select this form because it\'s corrupted!</string>
+
+    <string name="error_title">Kesalahan</string>
+    <string name="form_load_error">Maaf, terjadi kesalahan fatal saat memuat formulir. Silakan hubungi pengembang untuk bantuan lebih lanjut.</string>
+    <string name="select_one_option">Mohon pilih salah satu pilihan</string>
+    <string name="extended_radio_info_text_ensure_options_set">Pastikan Anda telah mengatur opsi tombol radio</string>
+    <string name="optibp_btn_get_started">Mulai</string>
+    <string name="optibp_unable_to_receive">Tidak dapat menerima hasil apa pun</string>
+    <string name="missing_client_info">Info klien hilang</string>
+    <string name="optibp_label">Ukur tekanan darah menggunakan OptiBP</string>
+    <string name="optibp_values_error">Tidak ada kolom yang ditetapkan untuk mengisi nilai tekanan darah</string>
+    <!-- END - Imported from native form -->
 </resources>
