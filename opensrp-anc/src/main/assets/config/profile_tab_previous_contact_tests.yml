@@ -202,10 +202,10 @@ fields:
   - template: "{{profile_contact_test.blood_haemoglobin_test.blood_haemoglobin_test_type}}: {hb_test_type_value}"
     relevance: "hb_test_type != '' && helper.compareDateAgainstContactDate(hb_test_date, contact_date)"
 
-  - template: "{{profile_contact_test.blood_haemoglobin_test.complete_blood_count_test_result_g_dl}}: {cbc_value}"
+  - template: "{{profile_contact_test.blood_haemoglobin_test.complete_blood_count_test_result_g_dl}}: {cbc}"
     relevance: "cbc != '' && helper.compareDateAgainstContactDate(hb_test_date, contact_date)"
 
-  - template: "{{profile_contact_test.blood_haemoglobin_test.rhb_test_result_haemoglobinometer_g_dl}}: {hb_gmeter_value}"
+  - template: "{{profile_contact_test.blood_haemoglobin_test.rhb_test_result_haemoglobinometer_g_dl}}: {hb_gmeter}"
     relevance: "hb_gmeter != '' && helper.compareDateAgainstContactDate(hb_test_date, contact_date)"
 
   - template: "{{profile_contact_test.blood_haemoglobin_test.hb_test_result_haemoglobin_colour_scale_g_dl}}: {hb_colour_value}"
