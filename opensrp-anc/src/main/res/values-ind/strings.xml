@@ -2,6 +2,7 @@
     <!-- Actions -->
     <string name="action_logout">Keluar</string>
     <string name="action_language">Bahasa</string>
+    <string name="loggin_in_dialog_title">Sedang proses masuk…</string>
 
     <!-- General -->
 
