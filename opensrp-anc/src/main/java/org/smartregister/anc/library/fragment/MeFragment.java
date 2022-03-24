@@ -167,7 +167,7 @@ public class MeFragment extends org.smartregister.view.fragment.MeFragment imple
 
     private void addLanguages() {
         locales.put(getString(R.string.english_language), Locale.ENGLISH);
-        locales.put(getString(R.string.bahasa_indonesia),new Locale("in"));
+        locales.put(getString(R.string.bahasa_indonesia),new Locale("ind"));
     }
 
 }
