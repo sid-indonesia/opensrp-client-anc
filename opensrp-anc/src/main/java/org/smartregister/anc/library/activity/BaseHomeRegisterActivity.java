@@ -46,6 +46,7 @@ import org.smartregister.anc.library.util.ANCJsonFormUtils;
 import org.smartregister.anc.library.util.ConstantsUtils;
 import org.smartregister.anc.library.util.DBConstantsUtils;
 import org.smartregister.anc.library.util.Utils;
+import org.smartregister.util.LangUtils;
 import org.smartregister.commonregistry.CommonPersonObjectClient;
 import org.smartregister.configurableviews.ConfigurableViewsLibrary;
 import org.smartregister.configurableviews.model.Field;
@@ -59,6 +60,7 @@ import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 import timber.log.Timber;
@@ -83,6 +85,8 @@ public class BaseHomeRegisterActivity extends BaseRegisterActivity implements Re
         super.onCreate(savedInstanceState);
         recordBirthAlertDialog = createAlertDialog();
         createAttentionFlagsAlertDialog();
+        //Locale current = getApplicationContext().getResources().getConfiguration().locale;
+        //LangUtils.saveLanguage(getApplicationContext(), current.getLanguage());
     }
 
     @Override
@@ -91,6 +95,7 @@ public class BaseHomeRegisterActivity extends BaseRegisterActivity implements Re
         bottomNavigationView = findViewById(org.smartregister.R.id.bottom_navigation);
 
         if (bottomNavigationView != null) {
+
             if (isMeItemEnabled()) {
                 bottomNavigationView.getMenu()
                         .add(Menu.NONE, org.smartregister.R.string.action_me, Menu.NONE, org.smartregister.R.string.me).setIcon(

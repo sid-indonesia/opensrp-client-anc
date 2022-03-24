@@ -13,6 +13,7 @@
         {
           "key": "done_today",
           "text": "{{tests_ultrasound_sub_form.step1.ultrasound.done_today.text}}",
+          "translation_text": "tests_ultrasound_sub_form.step1.ultrasound.done_today.text",
           "type": "done_today",
           "openmrs_entity_parent": "",
           "openmrs_entity": "concept",
@@ -21,6 +22,7 @@
         {
           "key": "done_earlier",
           "text": "{{tests_ultrasound_sub_form.step1.ultrasound.done_earlier.text}}",
+          "translation_text": "tests_ultrasound_sub_form.step1.ultrasound.done_earlier.text",
           "type": "done_earlier",
           "openmrs_entity_parent": "",
           "openmrs_entity": "concept",
@@ -29,6 +31,7 @@
         {
           "key": "ordered",
           "text": "{{tests_ultrasound_sub_form.step1.ultrasound.ordered.text}}",
+          "translation_text": "tests_ultrasound_sub_form.step1.ultrasound.ordered.text",
           "type": "ordered",
           "openmrs_entity_parent": "",
           "openmrs_entity": "concept",
@@ -37,6 +40,7 @@
         {
           "key": "not_done",
           "text": "{{tests_ultrasound_sub_form.step1.ultrasound.not_done.text}}",
+          "translation_text": "tests_ultrasound_sub_form.step1.ultrasound.not_done.text",
           "type": "not_done",
           "openmrs_entity_parent": "",
           "openmrs_entity": "concept",
@@ -67,6 +71,7 @@
         {
           "key": "delayed",
           "text": "{{tests_ultrasound_sub_form.step1.ultrasound_notdone.options.delayed.text}}",
+          "translation_text": "tests_ultrasound_sub_form.step1.ultrasound_notdone.options.delayed.text",
           "openmrs_entity_parent": "",
           "openmrs_entity": "concept",
           "openmrs_entity_id": "165295AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
@@ -74,6 +79,7 @@
         {
           "key": "not_available",
           "text": "{{tests_ultrasound_sub_form.step1.ultrasound_notdone.options.not_available.text}}",
+          "translation_text": "tests_ultrasound_sub_form.step1.ultrasound_notdone.options.not_available.text",
           "openmrs_entity_parent": "",
           "openmrs_entity": "concept",
           "openmrs_entity_id": "165386AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
@@ -81,6 +87,7 @@
         {
           "key": "other",
           "text": "{{tests_ultrasound_sub_form.step1.ultrasound_notdone.options.other.text}}",
+          "translation_text": "tests_ultrasound_sub_form.step1.ultrasound_notdone.options.other.text",
           "openmrs_entity_parent": "159617AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
           "openmrs_entity": "concept",
           "openmrs_entity_id": "5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
@@ -170,6 +177,7 @@
       "openmrs_entity_id": "",
       "type": "toaster_notes",
       "text": "{{tests_ultrasound_sub_form.step1.ultrasound_info_toaster.text}}",
+      "translation_text": "tests_ultrasound_sub_form.step1.ultrasound_info_toaster.text",
       "toaster_type": "info",
       "relevance": {
         "rules-engine": {
@@ -186,6 +194,7 @@
       "openmrs_entity_id": "",
       "type": "toaster_notes",
       "text": "{{tests_ultrasound_sub_form.step1.ultrasound_done_early_toaster.text}}",
+      "translation_text": "tests_ultrasound_sub_form.step1.ultrasound_done_early_toaster.text",
       "toaster_info_text": "{{tests_ultrasound_sub_form.step1.ultrasound_done_early_toaster.toaster_info_text}}",
       "toaster_info_title": "{{tests_ultrasound_sub_form.step1.ultrasound_done_early_toaster.toaster_info_title}}",
       "toaster_type": "positive",
@@ -224,6 +233,7 @@
       "type": "label",
       "label_text_style": "bold",
       "text": "{{tests_ultrasound_sub_form.step1.no_of_fetuses_label.text}}",
+      "translation_text": "tests_ultrasound_sub_form.step1.no_of_fetuses_label.text",
       "text_color": "#000000",
       "v_required": {
         "value": true
@@ -301,6 +311,7 @@
       "openmrs_entity_id": "",
       "type": "toaster_notes",
       "text": "{{tests_ultrasound_sub_form.step1.pre_eclampsia_toaster.text}}",
+      "translation_text": "tests_ultrasound_sub_form.step1.pre_eclampsia_toaster.text",
       "toaster_info_text": "{{tests_ultrasound_sub_form.step1.pre_eclampsia_toaster.toaster_info_text}}",
       "toaster_info_title": "{{tests_ultrasound_sub_form.step1.pre_eclampsia_toaster.toaster_info_title}}",
       "toaster_type": "warning",
@@ -333,6 +344,7 @@
         {
           "key": "cephalic",
           "text": "{{tests_ultrasound_sub_form.step1.fetal_presentation.options.cephalic.text}}",
+          "translation_text": "tests_ultrasound_sub_form.step1.fetal_presentation.options.cephalic.text",
           "openmrs_entity_parent": "",
           "openmrs_entity": "concept",
           "openmrs_entity_id": "160091AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
@@ -340,6 +352,7 @@
         {
           "key": "pelvic",
           "text": "{{tests_ultrasound_sub_form.step1.fetal_presentation.options.pelvic.text}}",
+          "translation_text": "tests_ultrasound_sub_form.step1.fetal_presentation.options.pelvic.text",
           "openmrs_entity_parent": "",
           "openmrs_entity": "concept",
           "openmrs_entity_id": "146922AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
@@ -347,6 +360,7 @@
         {
           "key": "transverse",
           "text": "{{tests_ultrasound_sub_form.step1.fetal_presentation.options.transverse.text}}",
+          "translation_text": "tests_ultrasound_sub_form.step1.fetal_presentation.options.transverse.text",
           "openmrs_entity_parent": "",
           "openmrs_entity": "concept",
           "openmrs_entity_id": "112259AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
@@ -354,6 +368,7 @@
         {
           "key": "other",
           "text": "{{tests_ultrasound_sub_form.step1.fetal_presentation.options.other.text}}",
+          "translation_text": "tests_ultrasound_sub_form.step1.fetal_presentation.options.other.text",
           "openmrs_entity_parent": "",
           "openmrs_entity": "concept",
           "openmrs_entity_id": "5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
@@ -386,6 +401,7 @@
         {
           "key": "normal",
           "text": "{{tests_ultrasound_sub_form.step1.amniotic_fluid.options.normal.text}}",
+          "translation_text": "tests_ultrasound_sub_form.step1.amniotic_fluid.options.normal.text",
           "openmrs_entity_parent": "",
           "openmrs_entity": "concept",
           "openmrs_entity_id": "1115AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
@@ -393,6 +409,7 @@
         {
           "key": "reduced",
           "text": "{{tests_ultrasound_sub_form.step1.amniotic_fluid.options.reduced.text}}",
+          "translation_text": "tests_ultrasound_sub_form.step1.amniotic_fluid.options.reduced.text",
           "openmrs_entity_parent": "",
           "openmrs_entity": "concept",
           "openmrs_entity_id": "162648AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
@@ -400,6 +417,7 @@
         {
           "key": "increased",
           "text": "{{tests_ultrasound_sub_form.step1.amniotic_fluid.options.increased.text}}",
+          "translation_text": "tests_ultrasound_sub_form.step1.amniotic_fluid.options.increased.text",
           "openmrs_entity_parent": "",
           "openmrs_entity": "concept",
           "openmrs_entity_id": "164471AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
@@ -425,6 +443,7 @@
         {
           "key": "praevia",
           "text": "{{tests_ultrasound_sub_form.step1.placenta_location.options.praevia.text}}",
+          "translation_text": "tests_ultrasound_sub_form.step1.placenta_location.options.praevia.text",
           "openmrs_entity_parent": "",
           "openmrs_entity": "concept",
           "openmrs_entity_id": "114127AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
@@ -432,6 +451,7 @@
         {
           "key": "low",
           "text": "{{tests_ultrasound_sub_form.step1.placenta_location.options.low.text}}",
+          "translation_text": "tests_ultrasound_sub_form.step1.placenta_location.options.low.text",
           "openmrs_entity_parent": "",
           "openmrs_entity": "concept",
           "openmrs_entity_id": "165297AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
@@ -439,6 +459,7 @@
         {
           "key": "anterior",
           "text": "{{tests_ultrasound_sub_form.step1.placenta_location.options.anterior.text}}",
+          "translation_text": "tests_ultrasound_sub_form.step1.placenta_location.options.anterior.text",
           "openmrs_entity_parent": "",
           "openmrs_entity": "concept",
           "openmrs_entity_id": "540AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
@@ -446,6 +467,7 @@
         {
           "key": "posterior",
           "text": "{{tests_ultrasound_sub_form.step1.placenta_location.options.posterior.text}}",
+          "translation_text": "tests_ultrasound_sub_form.step1.placenta_location.options.posterior.text",
           "openmrs_entity_parent": "",
           "openmrs_entity": "concept",
           "openmrs_entity_id": "541AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
@@ -453,6 +475,7 @@
         {
           "key": "right_side",
           "text": "{{tests_ultrasound_sub_form.step1.placenta_location.options.right_side.text}}",
+          "translation_text": "tests_ultrasound_sub_form.step1.placenta_location.options.right_side.text",
           "openmrs_entity_parent": "",
           "openmrs_entity": "concept",
           "openmrs_entity_id": "5141AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
@@ -460,6 +483,7 @@
         {
           "key": "left_side",
           "text": "{{tests_ultrasound_sub_form.step1.placenta_location.options.left_side.text}}",
+          "translation_text": "tests_ultrasound_sub_form.step1.placenta_location.options.left_side.text",
           "openmrs_entity_parent": "",
           "openmrs_entity": "concept",
           "openmrs_entity_id": "5139AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
@@ -467,6 +491,7 @@
         {
           "key": "fundal",
           "text": "{{tests_ultrasound_sub_form.step1.placenta_location.options.fundal.text}}",
+          "translation_text": "tests_ultrasound_sub_form.step1.placenta_location.options.fundal.text",
           "openmrs_entity_parent": "",
           "openmrs_entity": "concept",
           "openmrs_entity_id": "165298AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"

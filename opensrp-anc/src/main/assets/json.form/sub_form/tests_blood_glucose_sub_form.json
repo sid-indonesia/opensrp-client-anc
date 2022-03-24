@@ -13,6 +13,7 @@
         {
           "key": "done_today",
           "text": "{{tests_blood_glucose_sub_form.step1.glucose_test_status.done_today.text}}",
+          "translation_text": "tests_blood_glucose_sub_form.step1.glucose_test_status.done_today.text",
           "type": "done_today",
           "openmrs_entity_parent": "",
           "openmrs_entity": "concept",
@@ -21,6 +22,7 @@
         {
           "key": "done_earlier",
           "text": "{{tests_blood_glucose_sub_form.step1.glucose_test_status.done_earlier.text}}",
+          "translation_text": "tests_blood_glucose_sub_form.step1.glucose_test_status.done_earlier.text",
           "type": "done_earlier",
           "openmrs_entity_parent": "",
           "openmrs_entity": "concept",
@@ -29,6 +31,7 @@
         {
           "key": "ordered",
           "text": "{{tests_blood_glucose_sub_form.step1.glucose_test_status.ordered.text}}",
+          "translation_text": "tests_blood_glucose_sub_form.step1.glucose_test_status.ordered.text",
           "type": "ordered",
           "openmrs_entity_parent": "",
           "openmrs_entity": "concept",
@@ -37,6 +40,7 @@
         {
           "key": "not_done",
           "text": "{{tests_blood_glucose_sub_form.step1.glucose_test_status.not_done.text}}",
+          "translation_text": "tests_blood_glucose_sub_form.step1.glucose_test_status.not_done.text",
           "type": "not_done",
           "openmrs_entity_parent": "",
           "openmrs_entity": "concept",
@@ -111,6 +115,7 @@
         {
           "key": "fasting_plasma",
           "text": "{{tests_blood_glucose_sub_form.step1.glucose_test_type.options.fasting_plasma.text}}",
+          "translation_text": "tests_blood_glucose_sub_form.step1.glucose_test_type.options.fasting_plasma.text",
           "openmrs_entity_parent": "",
           "openmrs_entity": "concept",
           "openmrs_entity_id": "160053AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
@@ -118,6 +123,7 @@
         {
           "key": "ogtt_75",
           "text": "{{tests_blood_glucose_sub_form.step1.glucose_test_type.options.ogtt_75.text}}",
+          "translation_text": "tests_blood_glucose_sub_form.step1.glucose_test_type.options.ogtt_75.text",
           "openmrs_entity_parent": "",
           "openmrs_entity": "concept",
           "openmrs_entity_id": "163594AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
@@ -125,6 +131,7 @@
         {
           "key": "random_plasma",
           "text": "{{tests_blood_glucose_sub_form.step1.glucose_test_type.options.random_plasma.text}}",
+          "translation_text": "tests_blood_glucose_sub_form.step1.glucose_test_type.options.random_plasma.text",
           "openmrs_entity_parent": "",
           "openmrs_entity": "concept",
           "openmrs_entity_id": "887AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
@@ -340,6 +347,7 @@
       "openmrs_entity_id": "",
       "type": "toaster_notes",
       "text": "{{tests_blood_glucose_sub_form.step1.gestational_diabetes_danger_toaster.text}}",
+      "translation_text": "tests_blood_glucose_sub_form.step1.gestational_diabetes_danger_toaster.text",
       "toaster_info_text": "{{tests_blood_glucose_sub_form.step1.gestational_diabetes_danger_toaster.toaster_info_text}}",
       "toaster_info_title": "{{tests_blood_glucose_sub_form.step1.gestational_diabetes_danger_toaster.toaster_info_title}}",
       "toaster_type": "problem",
@@ -358,6 +366,7 @@
       "openmrs_entity_id": "",
       "type": "toaster_notes",
       "text": "{{tests_blood_glucose_sub_form.step1.diabetes_mellitus_danger_toaster.text}}",
+      "translation_text": "tests_blood_glucose_sub_form.step1.diabetes_mellitus_danger_toaster.text",
       "toaster_info_text": "{{tests_blood_glucose_sub_form.step1.diabetes_mellitus_danger_toaster.toaster_info_text}}",
       "toaster_info_title": "{{tests_blood_glucose_sub_form.step1.diabetes_mellitus_danger_toaster.toaster_info_title}}",
       "toaster_type": "problem",
@@ -376,6 +385,7 @@
       "openmrs_entity_id": "",
       "type": "toaster_notes",
       "text": "{{tests_blood_glucose_sub_form.step1.dietary_intervention_danger_toaster.text}}",
+      "translation_text": "tests_blood_glucose_sub_form.step1.dietary_intervention_danger_toaster.text",
       "toaster_info_text": "{{tests_blood_glucose_sub_form.step1.dietary_intervention_danger_toaster.toaster_info_text}}",
       "toaster_type": "problem",
       "relevance": {

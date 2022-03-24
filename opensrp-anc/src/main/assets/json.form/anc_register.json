@@ -192,6 +192,7 @@
           {
             "key": "dob_unknown",
             "text": "{{anc_register.step1.dob_unknown.options.dob_unknown.text}}",
+            "translation_text": "anc_register.step1.dob_unknown.options.dob_unknown.text",
             "text_size": "18px",
             "value": "false",
             "openmrs_entity_parent": "",
@@ -308,12 +309,14 @@
           {
             "key": "yes",
             "text": "{{anc_register.step1.reminders.options.yes.text}}",
+            "translation_text": "anc_register.step1.reminders.options.yes.text",
             "openmrs_entity": "",
             "openmrs_entity_id": "1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
           },
           {
             "key": "no",
             "text": "{{anc_register.step1.reminders.options.no.text}}",
+            "translation_text": "anc_register.step1.reminders.options.no.text",
             "openmrs_entity": "",
             "openmrs_entity_id": "1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
           }
@@ -365,6 +368,7 @@
           {
             "key": "parents",
             "text": "{{anc_register.step1.cohabitants.options.parents.text}}",
+            "translation_text": "anc_register.step1.cohabitants.options.parents.text",
             "text_size": "18px",
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
@@ -374,6 +378,7 @@
           {
             "key": "siblings",
             "text": "{{anc_register.step1.cohabitants.options.siblings.text}}",
+            "translation_text": "anc_register.step1.cohabitants.options.siblings.text",
             "text_size": "18px",
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
@@ -383,6 +388,7 @@
           {
             "key": "extended_family",
             "text": "{{anc_register.step1.cohabitants.options.extended_family.text}}",
+            "translation_text": "anc_register.step1.cohabitants.options.extended_family.text",
             "text_size": "18px",
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
@@ -392,6 +398,7 @@
           {
             "key": "partner",
             "text": "{{anc_register.step1.cohabitants.options.partner.text}}",
+            "translation_text": "anc_register.step1.cohabitants.options.partner.text",
             "text_size": "18px",
             "openmrs_entity_parent": "",
             "value": false,
@@ -401,6 +408,7 @@
           {
             "key": "friends",
             "text": "{{anc_register.step1.cohabitants.options.friends.text}}",
+            "translation_text": "anc_register.step1.cohabitants.options.friends.text",
             "text_size": "18px",
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
@@ -410,6 +418,7 @@
           {
             "key": "no_one",
             "text": "{{anc_register.step1.cohabitants.options.no_one.text}}",
+            "translation_text": "anc_register.step1.cohabitants.options.no_one.text",
             "text_size": "18px",
             "openmrs_entity_parent": "",
             "value": false,
