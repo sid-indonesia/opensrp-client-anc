@@ -307,7 +307,7 @@ fields:
   - template: "{{profile_overview.birth_plan_counseling.planned_birth_place}}: {delivery_place_value}"
     relevance: "delivery_place != ''"
 
-  - template: "{{profile_overview.birth_plan_counseling.fp_method_accepted}}: {family_planning_type}"
+  - template: "{{profile_overview.birth_plan_counseling.fp_method_accepted}}: {family_planning_type_value}"
     relevance: "family_planning_type != ''"
 
 ---
