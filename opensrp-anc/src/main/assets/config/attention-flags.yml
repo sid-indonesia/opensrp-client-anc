@@ -18,10 +18,10 @@ fields:
   - template: "{{attention_flags.yellow.past_alcohol_substances_used}}: {substances_used_value}"
     relevance: "!substances_used.isEmpty() && !substances_used.contains('none')"
 
-  - template: "{{attention_flags.yellow.pre_eclampsia_risk}}"
+  - template: "{{attention_flags.yellow.pre_eclampsia_risk}}: Ya"
     relevance: "preeclampsia_risk == 1"
 
-  - template: "{{attention_flags.yellow.diabetes_risk}}"
+  - template: "{{attention_flags.yellow.diabetes_risk}}: Ya"
     relevance: "gdm_risk == 1"
 
   - template: "{{attention_flags.yellow.surgeries}}: {surgeries_value}"
@@ -30,16 +30,16 @@ fields:
   - template: "{{attention_flags.yellow.chronic_health_conditions}}: {health_conditions_value}"
     relevance: "!health_conditions.isEmpty() && !health_conditions.contains('none') && !health_conditions.contains('dont_know')"
 
-  - template: "{{attention_flags.yellow.high_daily_consumption_of_caffeine}}"
+  - template: "{{attention_flags.yellow.high_daily_consumption_of_caffeine}}: Ya"
     relevance: "!caffeine_intake.isEmpty() && !caffeine_intake.contains('none')"
 
-  - template: "{{attention_flags.yellow.second_hand_exposure_to_tobacco_smoke}}"
+  - template: "{{attention_flags.yellow.second_hand_exposure_to_tobacco_smoke}}: Ya"
     relevance: "shs_exposure == 'yes'"
 
   - template: "{{attention_flags.yellow.persistent_physiological_symptoms}}: {phys_symptoms_persist_value}"
     relevance: "!phys_symptoms_persist.isEmpty() && !phys_symptoms_persist.contains('none')"
 
-  - template: "{{attention_flags.yellow.reduced_or_no_fetal_movement_perceived_by_woman}}"
+  - template: "{{attention_flags.yellow.reduced_or_no_fetal_movement_perceived_by_woman}}: Ya"
     relevance: "mat_percept_fetal_move != '' && mat_percept_fetal_move != 'normal_fetal_move'"
 
   - template: "{{attention_flags.yellow.weight_category}}: {weight_cat_value}"
@@ -54,10 +54,10 @@ fields:
   - template: "{{attention_flags.yellow.abnormal_pelvic_exam}}: {pelvic_exam_abnormal_value}"
     relevance: "!pelvic_exam_abnormal.contains('none') && !pelvic_exam_abnormal.isEmpty()"
 
-  - template: "{{attention_flags.yellow.oedema_present}}"
+  - template: "{{attention_flags.yellow.oedema_present}}: Ya"
     relevance: "oedema == 'yes'"
 
-  - template: "{{attention_flags.yellow.rh_factor_negative}}"
+  - template: "{{attention_flags.yellow.rh_factor_negative}}: Ya"
     relevance: "rh_factor == 'negative'"
 ---
 group: red_attention_flag
@@ -66,7 +66,7 @@ fields:
   - template: "{{attention_flags.red.danger_sign}}: {danger_signs_value}"
     relevance: "!danger_signs.isEmpty() && !danger_signs.contains('danger_none')"
 
-  - template: "{{attention_flags.red.occupation_informal_employment_sex_worker}}"
+  - template: "{{attention_flags.red.occupation_informal_employment_sex_worker}}: Ya"
     relevance: "occupation.contains('informal_employment_sex_worker')"
 
   - template: "{{attention_flags.red.no_of_pregnancies_lost_ended}}: {miscarriages_abortions}"
@@ -81,16 +81,16 @@ fields:
   - template: "{{attention_flags.red.allergies}}: {allergies_value}"
     relevance: "!allergies.isEmpty() && !allergies.contains('none')"
 
-  - template: "{{attention_flags.red.tobacco_user_or_recently_quit}}"
+  - template: "{{attention_flags.red.tobacco_user_or_recently_quit}}: Ya"
     relevance: "tobacco_user == 'yes' ||  tobacco_user == 'recently_quit'"
 
-  - template: "{{attention_flags.red.woman_and_her_partner_do_not_use_condoms}}"
+  - template: "{{attention_flags.red.woman_and_her_partner_do_not_use_condoms}}: Ya"
     relevance: "condom_use == 'no'"
 
   - template: "{{attention_flags.red.alcohol_substances_currently_using}}: {alcohol_substance_use_value}"
     relevance: "!alcohol_substance_use.isEmpty()  && !alcohol_substance_use.contains('none')"
 
-  - template: "{{attention_flags.red.hypertension_diagnosis}}"
+  - template: "{{attention_flags.red.hypertension_diagnosis}}: Ya"
     relevance: "hypertension == 1"
 
   - template: "{{attention_flags.red.severe_hypertension}}: {bp_systolic_repeat}/{bp_diastolic_repeat} mmHg"
@@ -99,10 +99,10 @@ fields:
   - template: "{{attention_flags.red.hypertension_and_symptom_of_severe_pre_eclampsia}}: {symp_sev_preeclampsia}"
     relevance: "hypertension == 1 && !symp_sev_preeclampsia.isEmpty() && !symp_sev_preeclampsia.contains('none')"
 
-  - template: "{{attention_flags.red.pre_eclampsia_diagnosis}}"
+  - template: "{{attention_flags.red.pre_eclampsia_diagnosis}}: Ya"
     relevance: "preeclampsia == 1"
 
-  - template: "{{attention_flags.red.severe_pre_eclampsia_diagnosis}}"
+  - template: "{{attention_flags.red.severe_pre_eclampsia_diagnosis}}: Ya"
     relevance: "severe_preeclampsia == 1"
 
   - template: "{{attention_flags.red.fever}}: {body_temp_repeat}ºC"
@@ -111,7 +111,7 @@ fields:
   - template: "{{attention_flags.red.abnormal_pulse_rate}}: {pulse_rate_repeat}kpm"
     relevance: "pulse_rate_repeat < 60 || pulse_rate_repeat > 100"
 
-  - template: "{{attention_flags.red.anaemia_diagnosis}}"
+  - template: "{{attention_flags.red.anaemia_diagnosis}}: Ya"
     relevance: "anaemic == 1"
 
   - template: "{{attention_flags.red.respiratory_distress}}: {respiratory_exam_abnormal_value}"
@@ -126,7 +126,7 @@ fields:
   - template: "{{attention_flags.red.cervix_dilated}}: {dilation_cm} cm"
     relevance: "dilation_cm > 2"
 
-  - template: "{{attention_flags.red.no_fetal_heartbeat_observed}}"
+  - template: "{{attention_flags.red.no_fetal_heartbeat_observed}}: Ya"
     relevance: "fetal_heartbeat == 'no'"
 
   - template: "{{attention_flags.red.abnormal_fetal_heart_rate}}: {fetal_heart_rate_repeat}kpm"
@@ -135,40 +135,40 @@ fields:
   - template: "{{attention_flags.red.no_of_fetuses}}: {no_of_fetuses}"
     relevance: "no_of_fetuses > 1"
 
-  - template: "{{attention_flags.red.fetal_presentation}}: {fetal_presentation} "
+  - template: "{{attention_flags.red.fetal_presentation}}: {fetal_presentation_value} "
     relevance: "gest_age >= 28 && fetal_presentation == 'transverse'"
 
-  - template: "{{attention_flags.red.amniotic_fluid}}: {amniotic_fluid}"
+  - template: "{{attention_flags.red.amniotic_fluid}}: {amniotic_fluid_value}"
     relevance: "amniotic_fluid == 'reduced' || amniotic_fluid == 'increased'"
 
   - template: "{{attention_flags.red.placenta_location}}: {placenta_location_value}"
     relevance: "placenta_location == 'praevia'"
 
-  - template: "{{attention_flags.red.hiv_risk}}"
+  - template: "{{attention_flags.red.hiv_risk}}: Ya"
     relevance: "hiv_risk == 1"
 
-  - template: "{{attention_flags.red.hiv_positive}}"
+  - template: "{{attention_flags.red.hiv_positive}}: Ya"
     relevance: "hiv_positive == 1"
 
-  - template: "{{attention_flags.red.hepatitis_b_positive}}"
+  - template: "{{attention_flags.red.hepatitis_b_positive}}: Ya"
     relevance: "hepb_positive == 1"
 
-  - template: "{{attention_flags.red.hepatitis_c_positive}}"
+  - template: "{{attention_flags.red.hepatitis_c_positive}}: Ya"
     relevance: "hepc_positive == 1"
 
-  - template: "{{attention_flags.red.syphilis_positive}}"
+  - template: "{{attention_flags.red.syphilis_positive}}: Ya"
     relevance: "syphilis_positive == 1"
 
-  - template: "{{attention_flags.red.asymptomatic_bacteriuria_asb_diagnosis}}"
+  - template: "{{attention_flags.red.asymptomatic_bacteriuria_asb_diagnosis}}: Ya"
     relevance: "asb_positive == 1"
 
-  - template: "{{attention_flags.red.group_b_streptococcus_gbs_diagnosis}}"
+  - template: "{{attention_flags.red.group_b_streptococcus_gbs_diagnosis}}: Ya"
     relevance: "urine_culture == 'positive - group b streptococcus (gbs)'"
 
-  - template: "{{attention_flags.red.gestational_diabetes_mellitus_gdm_diagnosis}}"
+  - template: "{{attention_flags.red.gestational_diabetes_mellitus_gdm_diagnosis}}: Ya"
     relevance: "gdm == 1"
 
-  - template: "{{attention_flags.red.diabetes_mellitus_dm_in_pregnancy_diagnosis}}"
+  - template: "{{attention_flags.red.diabetes_mellitus_dm_in_pregnancy_diagnosis}}: Ya"
     relevance: "dm_in_preg == 1"
 
   - template: "{{attention_flags.red.hematocrit_ht}}: {ht}"
@@ -180,5 +180,5 @@ fields:
   - template: "{{attention_flags.red.platelet_count}}: {platelets}"
     relevance: "platelets < 100000"
 
-  - template: "{{attention_flags.red.tb_screening_positive}}"
+  - template: "{{attention_flags.red.tb_screening_positive}}: Ya"
     relevance: "tb_screening_result == 'positive'"

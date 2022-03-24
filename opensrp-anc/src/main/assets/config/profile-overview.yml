@@ -24,13 +24,13 @@ fields:
     relevance: "no_of_fetuses != ''"
     isRedFont: "no_of_fetuses > 1"
 
-  - template: "{{profile_overview.overview_of_pregnancy.current_pregnancy.fetal_presentation}}: {fetal_presentation}"
+  - template: "{{profile_overview.overview_of_pregnancy.current_pregnancy.fetal_presentation}}: {fetal_presentation_value}"
     relevance: "fetal_presentation != ''"
 
-  - template: "{{profile_overview.overview_of_pregnancy.current_pregnancy.amniotic_fluid}}: {amniotic_fluid}"
+  - template: "{{profile_overview.overview_of_pregnancy.current_pregnancy.amniotic_fluid}}: {amniotic_fluid_value}"
     relevance: "amniotic_fluid != ''"
 
-  - template: "{{profile_overview.overview_of_pregnancy.current_pregnancy.placenta_location}}: {placenta_location}"
+  - template: "{{profile_overview.overview_of_pregnancy.current_pregnancy.placenta_location}}: {placenta_location_value}"
     relevance: "placenta_location != ''"
     isRedFont: "placenta_location.contains('Previa')"
 
@@ -71,10 +71,10 @@ fields:
   - template: "{{profile_overview.overview_of_pregnancy.medical_history.blood_type}}: {blood_type}"
     relevance: "blood_type != ''"
 
-  - template: "{{profile_overview.overview_of_pregnancy.medical_history.allergies}}: {allergies}"
+  - template: "{{profile_overview.overview_of_pregnancy.medical_history.allergies}}: {allergies_value}"
     relevance: "allergies != ''"
 
-  - template: "{{profile_overview.overview_of_pregnancy.medical_history.surgeries}}: {surgeries}"
+  - template: "{{profile_overview.overview_of_pregnancy.medical_history.surgeries}}: {surgeries_value}"
     relevance: "surgeries != ''"
 
   - template: "{{profile_overview.overview_of_pregnancy.medical_history.chronic_health_conditions}}: {health_conditions_value}"
@@ -215,7 +215,7 @@ fields:
     relevance: "!alcohol_substance_use.isEmpty() && !alcohol_substance_use.contains('none')"
     isRedFont: "true"
 
-  - template: "Berkurang atau tidak ada gerakan janin yang dirasakan oleh wanita: {mat_percept_fetal_move}"
+  - template: "Berkurang atau tidak ada gerakan janin yang dirasakan oleh wanita: {mat_percept_fetal_move_value}"
     relevance: "mat_percept_fetal_move != '' && mat_percept_fetal_move != 'normal_fetal_move'"
     isRedFont: "true"
 
@@ -304,7 +304,7 @@ fields:
 ---
 group: birth_plan_counseling
 fields:
-  - template: "{{profile_overview.birth_plan_counseling.planned_birth_place}}: {delivery_place}"
+  - template: "{{profile_overview.birth_plan_counseling.planned_birth_place}}: {delivery_place_value}"
     relevance: "delivery_place != ''"
 
   - template: "{{profile_overview.birth_plan_counseling.fp_method_accepted}}: {family_planning_type}"
