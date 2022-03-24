@@ -145,8 +145,6 @@
     <string name="client">%1$d ibu</string>
     <string name="register">Register</string>
     <string name="library">Penyimpanan</string>
-    <string name="me">Saya</string>
-    <string name="clients_menu">Ibu</string>
     <string name="_0_clients_sort_updated">0 Ibu (Sortir: diperbarui)</string>
 
     <string name="reason_for_coming_facility">
@@ -706,12 +704,11 @@
     <string name="accordion_blood_glucose">Tes Glukosa Darah</string>
 
     <!--  Bottom Navigation Bar  -->
-    <string name="bottom_label_mother">Ibu</string>
-    <string name="bottom_label_search">Pencarian</string>
-    <string name="bottom_label_register">Daftar</string>
-    <string name="bottom_label_library">Pustaka</string>
-    <string name="bottom_label_me">Saya</string>
-
+    <string name="clients_menu">Ibu</string>
+    <string name="search_menu">Pencarian</string>
+    <string name="register_menu">Daftar</string>
+    <string name="library_menu">Pustaka</string>
+    <string name="me">Saya</string>
     <!--  Client Page  -->
     <string name="search_hint">Cari nama atau nomor identitas</string>
     <string name="str_page_info">Halaman {0} dari {1}</string>

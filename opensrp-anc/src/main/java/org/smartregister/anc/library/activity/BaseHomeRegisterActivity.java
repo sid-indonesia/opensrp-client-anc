@@ -96,22 +96,6 @@ public class BaseHomeRegisterActivity extends BaseRegisterActivity implements Re
 
         if (bottomNavigationView != null) {
 
-            if (isAdvancedSearchEnabled()) {
-                bottomNavigationView.getMenu().removeItem(R.id.action_search);
-                bottomNavigationView.getMenu().add(Menu.NONE, R.id.action_search, Menu.NONE, R.string.bottom_label_search)
-                    .setIcon(R.drawable.ic_bottom_icon_search);
-            }
-
-            bottomNavigationView.getMenu().removeItem(R.id.action_register);
-            bottomNavigationView.getMenu().add(Menu.NONE, R.id.action_register, Menu.NONE, R.string.bottom_label_register)
-                    .setIcon(R.drawable.ic_bottom_icon_register);
-
-            if (isLibraryItemEnabled()) {
-                bottomNavigationView.getMenu().removeItem(R.id.action_library);
-                bottomNavigationView.getMenu().add(Menu.NONE, R.id.action_library, Menu.NONE, R.string.bottom_label_library)
-                        .setIcon(R.drawable.ic_bottom_icon_library);
-            }
-
             if (isMeItemEnabled()) {
                 bottomNavigationView.getMenu()
                         .add(Menu.NONE, org.smartregister.R.string.action_me, Menu.NONE, org.smartregister.R.string.me).setIcon(
