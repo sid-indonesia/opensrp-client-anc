@@ -635,4 +635,12 @@
     <string name="accordion_tb_screening">TB Screening</string>
     <string name="accordion_partner_hiv">Partner HIV test</string>
     <string name="accordion_blood_glucose">Blood Glucose test</string>
+
+    <!--  Bottom Navigation Bar  -->
+    <string name="bottom_label_mother">Mother</string>
+    <string name="bottom_label_search">Search</string>
+    <string name="bottom_label_register">Register</string>
+    <string name="bottom_label_library">Library</string>
+    <string name="bottom_label_me">Me</string>
+
 </resources>

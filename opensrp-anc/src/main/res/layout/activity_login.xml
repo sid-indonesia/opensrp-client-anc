@@ -46,7 +46,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="5dp"
                 android:gravity="center_horizontal"
-                android:text="Bunda"
+                android:text="BUNDA"
                 android:textColor="@color/white"
                 android:textSize="@dimen/login_title_text_size"
                 android:textStyle="bold"
