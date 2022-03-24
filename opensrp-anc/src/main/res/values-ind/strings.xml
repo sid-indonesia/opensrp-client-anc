@@ -711,4 +711,9 @@
     <string name="bottom_label_register">Daftar</string>
     <string name="bottom_label_library">Pustaka</string>
     <string name="bottom_label_me">Saya</string>
+
+    <!--  Client Page  -->
+    <string name="search_hint">Cari nama atau nomor identitas</string>
+    <string name="str_page_info">Halaman {0} dari {1}</string>
+
 </resources>
