@@ -196,7 +196,7 @@ public class MainContactActivity extends BaseContactActivity implements ContactC
 
             // 6. Counseling and Treatment
             Contact counsellingAndTreatment = new Contact();
-            counsellingAndTreatment.setName("Counseling and Treatment");
+            counsellingAndTreatment.setName("Counselling and Treatment");
             counsellingAndTreatment.setTitle(getString(R.string.contact_counselling_treatment));
             counsellingAndTreatment.setContactNumber(contactNo);
             counsellingAndTreatment.setBackground(R.drawable.counselling_bg);
