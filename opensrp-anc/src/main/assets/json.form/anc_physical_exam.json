@@ -983,20 +983,6 @@
 				"openmrs_entity_parent": "",
 				"openmrs_entity": "",
 				"openmrs_entity_id": "",
-				"type": "optibp",
-				"label": "{{anc_physical_exam.step2.record_bp_using_optibp_button.label}}",
-				"optibp_button_bg_color": "#EB5281",
-				"optibp_button_text_color": "#FFFFFF",
-				"read_only": false,
-				"optibp_data": {
-					"clientId": "",
-					"clientOpenSRPId": "",
-					"calibration": ""
-				},
-				"fields_to_use_value": [
-					"bp_systolic",
-					"bp_diastolic"
-				],
 				"type": "toaster_notes",
 				"text": "{{anc_physical_exam.step3.bp_warning_manual.text}}",
 				"translation_text": "anc_physical_exam.step3.bp_warning_manual.text",
@@ -1156,8 +1142,7 @@
 				"read_only": false,
 				"optibp_data": {
 					"clientId": "",
-					"clientOpenSRPId": "",
-					"calibration": ""
+					"clientOpenSRPId": ""
 				},
 				"fields_to_use_value": [
 					"bp_systolic_optibp",

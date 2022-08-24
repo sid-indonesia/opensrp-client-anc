@@ -5,9 +5,6 @@ import android.content.Context;
 import android.text.TextUtils;
 import android.util.Log;
 
-import com.vijay.jsonwizard.constants.JsonFormConstants;
-import com.vijay.jsonwizard.utils.NativeFormLangUtils;
-
 import net.sqlcipher.Cursor;
 import net.sqlcipher.database.SQLiteDatabase;
 
@@ -218,11 +215,6 @@ public class PreviousContactRepository extends BaseRepository {
         return previousContactFacts;
     }
 
-    /***
-     *
-     * @param baseEntityId
-     * @return
-     */
     public Facts getPreviousContactTestsFacts(String baseEntityId) {
         Cursor mCursor = null;
         Facts previousContactsTestsFacts = new Facts();
@@ -232,16 +224,8 @@ public class PreviousContactRepository extends BaseRepository {
 
             if (mCursor != null) {
                 while (mCursor.moveToNext()) {
-                    String jsonValue = mCursor.getString(mCursor.getColumnIndex(VALUE));
-                    if (StringUtils.isNotBlank(jsonValue) && jsonValue.trim().startsWith("{")) {
-                        JSONObject valueObject = new JSONObject(jsonValue);
-                        String text, translated_text;
-                        text = valueObject.optString(JsonFormConstants.TEXT).trim();
-                        translated_text = StringUtils.isNotBlank(text) ? NativeFormLangUtils.translateDatabaseString(text, AncLibrary.getInstance().getApplicationContext()) : "";
-                        previousContactsTestsFacts.put(mCursor.getString(mCursor.getColumnIndex(KEY)), translated_text);
-                    } else {
-                        previousContactsTestsFacts.put(mCursor.getString(mCursor.getColumnIndex(KEY)), jsonValue);
-                    }
+                    previousContactsTestsFacts.put(mCursor.getString(mCursor.getColumnIndex(KEY)),
+                            mCursor.getString(mCursor.getColumnIndex(VALUE)));
 
                 }
                 return previousContactsTestsFacts;
@@ -326,34 +310,37 @@ public class PreviousContactRepository extends BaseRepository {
     public Facts getPreviousContactFacts(String baseEntityId, String contactNo, boolean checkNegative) {
         Cursor mCursor = null;
         String selection = "";
-        String orderBy = "MAX("+ ID + ") DESC";
+        String orderBy = "created_at DESC";
         String[] selectionArgs = null;
         Facts previousContactFacts = new Facts();
         try {
             SQLiteDatabase db = getReadableDatabase();
-
             if (StringUtils.isNotBlank(baseEntityId) && StringUtils.isNotBlank(contactNo)) {
                 selection = BASE_ENTITY_ID + " = ? AND " + CONTACT_NO + " = ?";
                 selectionArgs = new String[]{baseEntityId, getContactNo(contactNo, checkNegative)};
             }
-
-            mCursor = db.query(TABLE_NAME, projectionArgs, selection, selectionArgs, KEY, null, orderBy, null);
-
+            mCursor = db.query(TABLE_NAME, projectionArgs, selection, selectionArgs, null, null, orderBy, null);
             if (mCursor != null && mCursor.getCount() > 0) {
                 while (mCursor.moveToNext()) {
-                    String previousContactValue = mCursor.getString(mCursor.getColumnIndex(VALUE));
-                    if (StringUtils.isNotBlank(previousContactValue) && previousContactValue.trim().startsWith("{")) {
-                        JSONObject previousContactObject = new JSONObject(previousContactValue);
-                        if (previousContactObject.has(JsonFormConstants.KEY) && previousContactObject.has(JsonFormConstants.TEXT)) {
-                            String translated_text, text;
-                            text = previousContactObject.optString(JsonFormConstants.TEXT).trim();
-                            translated_text = StringUtils.isNotBlank(text) ? NativeFormLangUtils.translateDatabaseString(text, AncLibrary.getInstance().getApplicationContext()) : "";
-                            previousContactFacts.put(mCursor.getString(mCursor.getColumnIndex(KEY)), translated_text);
+                    Context context = AncLibrary.getInstance().getApplicationContext();
+                    String value = org.smartregister.util.Utils.getProperties(context).getProperty(ConstantsUtils.Properties.WIDGET_VALUE_TRANSLATED, "false");
+                    if (StringUtils.isNotBlank(value) && Boolean.parseBoolean(value)) {
+                        String previousContactValue = mCursor.getString(mCursor.getColumnIndex(VALUE));
+                        if (StringUtils.isNotBlank(previousContactValue) && previousContactValue.trim().charAt(0) == '{') {
+                            JSONObject previousContactObject = new JSONObject(previousContactValue);
+                            if (previousContactObject.has("value") && previousContactObject.has("text")) {
+                                String translation_text;
+                                translation_text = !previousContactObject.getString("text").isEmpty() ? "{" + previousContactObject.getString("text") + "}" : "";
+                                previousContactFacts.put(mCursor.getString(mCursor.getColumnIndex(KEY)), translation_text);
+                            } else {
+                                previousContactFacts.put(mCursor.getString(mCursor.getColumnIndex(KEY)), previousContactValue);
+                            }
                         } else {
                             previousContactFacts.put(mCursor.getString(mCursor.getColumnIndex(KEY)), previousContactValue);
                         }
+
                     } else {
-                        previousContactFacts.put(mCursor.getString(mCursor.getColumnIndex(KEY)), previousContactValue);
+                        previousContactFacts.put(mCursor.getString(mCursor.getColumnIndex(KEY)), mCursor.getString(mCursor.getColumnIndex(VALUE)));
                     }
 
                 }
