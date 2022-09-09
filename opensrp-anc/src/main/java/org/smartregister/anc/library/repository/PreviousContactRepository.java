@@ -1,5 +1,6 @@
 package org.smartregister.anc.library.repository;
 
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
 import android.text.TextUtils;
@@ -120,6 +121,7 @@ public class PreviousContactRepository extends BaseRepository {
         return dbPreviousContact;
     }
 
+    @SuppressLint("Range")
     private PreviousContact getContactResult(Cursor cursor) {
         PreviousContact previousContact = new PreviousContact();
         previousContact.setId(cursor.getLong(cursor.getColumnIndex(ID)));
@@ -172,6 +174,7 @@ public class PreviousContactRepository extends BaseRepository {
         return previousContacts;
     }
 
+    @SuppressLint("Range")
     public List<PreviousContactsSummaryModel> getPreviousContactsFacts(String baseEntityId) {
         List<PreviousContactsSummaryModel> previousContactFacts = new ArrayList<>();
         Cursor factsCursor = null;
@@ -223,6 +226,7 @@ public class PreviousContactRepository extends BaseRepository {
      * @param baseEntityId
      * @return
      */
+    @SuppressLint("Range")
     public Facts getPreviousContactTestsFacts(String baseEntityId) {
         Cursor mCursor = null;
         Facts previousContactsTestsFacts = new Facts();
@@ -232,7 +236,7 @@ public class PreviousContactRepository extends BaseRepository {
 
             if (mCursor != null) {
                 while (mCursor.moveToNext()) {
-                    String jsonValue = mCursor.getString(mCursor.getColumnIndex(VALUE));
+                    @SuppressLint("Range") String jsonValue = mCursor.getString(mCursor.getColumnIndex(VALUE));
                     if (StringUtils.isNotBlank(jsonValue) && jsonValue.trim().startsWith("{")) {
                         JSONObject valueObject = new JSONObject(jsonValue);
                         String text, translated_text;
@@ -277,6 +281,7 @@ public class PreviousContactRepository extends BaseRepository {
         return database.query(TABLE_NAME, projectionArgs, selection, selectionArgs, KEY, null, orderBy, null);
     }
 
+    @SuppressLint("Range")
     public Facts getAllTestResultsForIndividualTest(String baseEntityId, String indicator, String dateKey) {
         String orderBy = ID + " DESC ";
         String[] selectionArgs = null;
@@ -295,7 +300,7 @@ public class PreviousContactRepository extends BaseRepository {
 
             if (mCursor != null) {
                 while (mCursor.moveToNext()) {
-                    String factKey =
+                    @SuppressLint("Range") String factKey =
                             mCursor.getString(mCursor.getColumnIndex(KEY)) + ":" + mCursor
                                     .getString(mCursor.getColumnIndex(CONTACT_NO));
 
@@ -323,6 +328,7 @@ public class PreviousContactRepository extends BaseRepository {
      * @param checkNegative {@link Boolean}
      * @return previousContactsFacts {@link Facts}
      */
+    @SuppressLint("Range")
     public Facts getPreviousContactFacts(String baseEntityId, String contactNo, boolean checkNegative) {
         Cursor mCursor = null;
         String selection = "";
@@ -341,7 +347,7 @@ public class PreviousContactRepository extends BaseRepository {
 
             if (mCursor != null && mCursor.getCount() > 0) {
                 while (mCursor.moveToNext()) {
-                    String previousContactValue = mCursor.getString(mCursor.getColumnIndex(VALUE));
+                    @SuppressLint("Range") String previousContactValue = mCursor.getString(mCursor.getColumnIndex(VALUE));
                     if (StringUtils.isNotBlank(previousContactValue) && previousContactValue.trim().startsWith("{")) {
                         JSONObject previousContactObject = new JSONObject(previousContactValue);
                         if (previousContactObject.has(JsonFormConstants.KEY) && previousContactObject.has(JsonFormConstants.TEXT)) {
@@ -397,6 +403,7 @@ public class PreviousContactRepository extends BaseRepository {
      * @param contactNo    {@link String}
      * @return schedule {@link Facts}
      */
+    @SuppressLint("Range")
     public Facts getImmediatePreviousSchedule(String baseEntityId, String contactNo) {
         Cursor scheduleCursor = null;
         String selection = "";
