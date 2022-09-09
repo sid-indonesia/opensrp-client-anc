@@ -119,6 +119,7 @@ public class ANCFormUtils extends FormUtils {
         }
     }
 
+    /*
     private static void processRadioButtonsSpecialWidget(JSONObject widget, List<String> valueList) throws Exception {
         //Value already good for radio buttons so no keylist
         JSONArray jsonArray = widget.getJSONArray(ANCJsonFormConstants.OPTIONS_FIELD_NAME);
@@ -144,6 +145,47 @@ public class ANCFormUtils extends FormUtils {
 
                 } else {
                     valueList.add(jsonObject.getString(ANCJsonFormConstants.TEXT));
+                }
+            }
+        }
+
+        if (valueList.size() > 0) {
+            widget.put(getSecondaryKey(widget), getListValuesAsString(valueList));
+        }
+    }
+    */
+
+    // ONA FIX: https://github.com/opensrp/opensrp-client-anc/commit/b558f03045306ac6d321bcd1d363621c13f321cc (GESTATIONAL AGE)
+    private static void processRadioButtonsSpecialWidget(JSONObject widget, List<String> valueList) throws Exception {
+        //Value already good for radio buttons so no keylist
+        JSONArray jsonArray = widget.getJSONArray(JsonFormConstants.OPTIONS_FIELD_NAME);
+
+        for (int i = 0; i < jsonArray.length(); i++) {
+
+            JSONObject jsonObject = jsonArray.getJSONObject(i);
+            String widgetValue = null;
+            if(widget.has(JsonFormConstants.VALUE))
+                widgetValue = widget.getString(JsonFormConstants.VALUE);
+            if(widgetValue != null && widgetValue.startsWith("{"))
+                widgetValue =  new JSONObject(widgetValue).getString(JsonFormConstants.VALUE);
+
+            if (widgetValue!= null && !TextUtils.isEmpty(widgetValue) &&
+                    jsonObject.getString(JsonFormConstants.KEY).equals(widgetValue)) {
+
+                if (jsonObject.has(JsonFormConstants.SECONDARY_VALUE) &&
+                        !TextUtils.isEmpty(jsonObject.getString(JsonFormConstants.SECONDARY_VALUE))) {
+
+                    jsonObject.put(ConstantsUtils.KeyUtils.PARENT_SECONDARY_KEY, getSecondaryKey(widget));
+                    getRealSecondaryValue(jsonObject);
+
+                    if (jsonObject.has(ConstantsUtils.KeyUtils.SECONDARY_VALUES)) {
+                        widget.put(ConstantsUtils.KeyUtils.SECONDARY_VALUES, jsonObject.getJSONArray(ConstantsUtils.KeyUtils.SECONDARY_VALUES));
+                    }
+
+                    break;
+
+                } else {
+                    valueList.add(jsonObject.getString(JsonFormConstants.TEXT));
                 }
             }
         }

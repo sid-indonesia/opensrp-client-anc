@@ -267,6 +267,8 @@ public class MainContactActivity extends BaseContactActivity implements ContactC
                 }
                 //Make profile always complete on second contact onwards
                 requiredFieldsMap.put(ContactConstants.PROFILE, 0);
+                // FIX ONA: https://github.com/opensrp/opensrp-client-anc/commit/b558f03045306ac6d321bcd1d363621c13f321cc
+                // requiredFieldsMap.put(ConstantsUtils.JsonFormUtils.ANC_PROFILE_ENCOUNTER_TYPE, 0);
                 requiredFieldsMap.put(ConstantsUtils.JsonFormUtils.ANC_TEST_TASKS_ENCOUNTER_TYPE, 0);
 
             }
@@ -794,7 +796,8 @@ public class MainContactActivity extends BaseContactActivity implements ContactC
     }
     */
 
-    // ONA FIX: https://github.com/opensrp/opensrp-client-anc/commit/8f21958e76460bd2d36536aa495e87849486aa3f
+    // ONA FIX: https://github.com/opensrp/opensrp-client-anc/commit/8f21958e76460bd2d36536aa495e87849486aa3f (OPTIBP)
+    /*
     private void updateDefaultValues(JSONArray stepArray, int i, JSONObject fieldObject) throws JSONException {
         if (defaultValueFields.contains(fieldObject.getString(JsonFormConstants.KEY))) {
 
@@ -857,6 +860,85 @@ public class MainContactActivity extends BaseContactActivity implements ContactC
             String previousContactBpValue = getMapValue(optibpButtonKey) == null ? "" : getMapValue(optibpButtonKey);
             JSONObject optiBPData = FormUtils.createOptiBPDataObject(baseEntityId, womanOpenSRPId, previousContactBpValue);
             fieldObject.put(JsonFormConstants.OptibpConstants.OPTIBP_KEY_DATA, optiBPData);
+        }
+    }
+    */
+
+    // ONA FIX: https://github.com/opensrp/opensrp-client-anc/commit/b558f03045306ac6d321bcd1d363621c13f321cc (GESTATIONAL AGE)
+    private void updateDefaultValues(JSONArray stepArray, int i, JSONObject fieldObject) throws JSONException {
+        if (defaultValueFields.contains(fieldObject.getString(JsonFormConstants.KEY))) {
+
+            String secondaryValue = null;
+            if (!fieldObject.has(JsonFormConstants.VALUE) ||
+                    TextUtils.isEmpty(fieldObject.getString(JsonFormConstants.VALUE))) {
+
+                String defaultKey = fieldObject.getString(JsonFormConstants.KEY);
+                String mapValue = getMapValue(defaultKey);
+
+                if(fieldObject.has(ANCJsonFormConstants.KeyConstants.SECONDARY_VALUE_FIELD))
+                    secondaryValue = getMapValue(fieldObject.getString(ANCJsonFormConstants.KeyConstants.SECONDARY_VALUE_FIELD));
+
+
+                if (mapValue != null) {
+                    if(mapValue.startsWith("{"))
+                        fieldObject.put(JsonFormConstants.VALUE, new JSONObject(mapValue));
+                    else
+                        fieldObject.put(JsonFormConstants.VALUE, mapValue);
+                    fieldObject.put(JsonFormConstants.EDITABLE, editableFields.contains(defaultKey));
+                    fieldObject.put(JsonFormConstants.READ_ONLY, editableFields.contains(defaultKey));
+                }
+
+            }
+
+            if (fieldObject.has(JsonFormConstants.OPTIONS_FIELD_NAME)) {
+                boolean addDefaults = true;
+
+
+                for (int m = 0; m < fieldObject.getJSONArray(JsonFormConstants.OPTIONS_FIELD_NAME).length(); m++) {
+                    String optionValue;
+                    JSONObject optionsObject =  fieldObject.getJSONArray(JsonFormConstants.OPTIONS_FIELD_NAME).getJSONObject(m);
+                    if(optionsObject.has(JsonFormConstants.CONTENT_WIDGET) && secondaryValue != null)
+                    {
+                        JSONObject secondaryValueObject = new JSONObject();
+                        JSONArray  secondaryValueArray = new JSONArray();
+                        secondaryValueArray.put(secondaryValue);
+                        secondaryValueObject.put(JsonFormConstants.KEY, optionsObject.getString(JsonFormConstants.KEY));
+                        secondaryValueObject.put(JsonFormConstants.VALUES, secondaryValueArray);
+                        secondaryValueObject.put(JsonFormConstants.TYPE, optionsObject.getString(JsonFormConstants.CONTENT_WIDGET));
+                        optionsObject.put(JsonFormConstants.SECONDARY_VALUE,new JSONArray().put(secondaryValueObject));
+                    }
+
+                    if (fieldObject.getJSONArray(JsonFormConstants.OPTIONS_FIELD_NAME).getJSONObject(m)
+                            .has(JsonFormConstants.VALUE)) {
+                        optionValue = fieldObject.getJSONArray(JsonFormConstants.OPTIONS_FIELD_NAME).getJSONObject(m)
+                                .getString(JsonFormConstants.VALUE);
+                        if (ConstantsUtils.BooleanUtils.TRUE.equals(optionValue)) {
+                            addDefaults = false;
+                            break;
+                        }
+                    }
+                }
+
+                if (addDefaults && fieldObject.getString(JsonFormConstants.TYPE).equals(JsonFormConstants.CHECK_BOX) &&
+                        fieldObject.has(JsonFormConstants.VALUE)) {
+                    List<String> values = Arrays.asList(fieldObject.getString(JsonFormConstants.VALUE)
+                            .substring(1, fieldObject.getString(JsonFormConstants.VALUE).length() - 1).split(", "));
+
+                    for (int m = 0; m < fieldObject.getJSONArray(JsonFormConstants.OPTIONS_FIELD_NAME).length(); m++) {
+
+                        if (values.contains(fieldObject.getJSONArray(JsonFormConstants.OPTIONS_FIELD_NAME).getJSONObject(m)
+                                .getString(JsonFormConstants.KEY))) {
+                            stepArray.getJSONObject(i).getJSONArray(JsonFormConstants.OPTIONS_FIELD_NAME).getJSONObject(m)
+                                    .put(JsonFormConstants.VALUE, true);
+                            fieldObject.put(JsonFormConstants.EDITABLE,
+                                    editableFields.contains(fieldObject.getString(JsonFormConstants.KEY)));
+                            fieldObject.put(JsonFormConstants.READ_ONLY,
+                                    editableFields.contains(fieldObject.getString(JsonFormConstants.KEY)));
+                        }
+
+                    }
+                }
+            }
         }
     }
 
