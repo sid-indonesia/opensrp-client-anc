@@ -2529,6 +2529,22 @@
 						"openmrs_entity_id": "covid_partial"
 					},
 					{
+						"key": "booster1",
+						"text": "{{anc_profile.step5.covid_vaccine_status.options.booster1.text}}",
+						"translation_text": "anc_profile.step5.covid_vaccine_status.options.none.text",
+						"openmrs_entity_parent": "covid_vaccine_status",
+						"openmrs_entity": "concept",
+						"openmrs_entity_id": "covid_none"
+					},
+					{
+						"key": "booster2",
+						"text": "{{anc_profile.step5.covid_vaccine_status.options.booster2.text}}",
+						"translation_text": "anc_profile.step5.covid_vaccine_status.options.none.text",
+						"openmrs_entity_parent": "covid_vaccine_status",
+						"openmrs_entity": "concept",
+						"openmrs_entity_id": "covid_none"
+					},
+					{
 						"key": "none",
 						"text": "{{anc_profile.step5.covid_vaccine_status.options.none.text}}",
 						"translation_text": "anc_profile.step5.covid_vaccine_status.options.none.text",
