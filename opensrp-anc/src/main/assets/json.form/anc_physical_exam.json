@@ -584,32 +584,7 @@
 					"err": "{{anc_physical_exam.step3.bp_measurement_method.v_required.err}}"
 				}
 			},
-			{
-				"key": "record_bp_using_optibp_button",
-				"openmrs_entity_parent": "",
-				"openmrs_entity": "concept",
-				"openmrs_entity_id": "",
-				"type": "optibp",
-				"label": "{{anc_physical_exam.step3.record_bp_using_optibp_button.label}}",
-				"optibp_button_bg_color": "#EB5281",
-				"optibp_button_text_color": "#FFFFFF",
-				"read_only": false,
-				"optibp_data": {
-					"clientId": "",
-					"clientOpenSRPId": ""
-				},
-				"fields_to_use_value": [
-					"bp_systolic",
-					"bp_diastolic"
-				],
-				"relevance": {
-					"rules-engine": {
-						"ex-rules": {
-							"rules-file": "physical-exam-relevance-rules.yml"
-						}
-					}
-				}
-			},
+
 			{
 				"key": "bp_systolic_optibp_label",
 				"type": "label",
@@ -774,6 +749,32 @@
 					"value": "true",
 					"err": "{{anc_physical_exam.step3.cant_record_bp_reason.v_required.err}}"
 				},
+				"relevance": {
+					"rules-engine": {
+						"ex-rules": {
+							"rules-file": "physical-exam-relevance-rules.yml"
+						}
+					}
+				}
+			},
+			{
+				"key": "record_bp_using_optibp_button",
+				"openmrs_entity_parent": "",
+				"openmrs_entity": "concept",
+				"openmrs_entity_id": "",
+				"type": "optibp",
+				"label": "{{anc_physical_exam.step3.record_bp_using_optibp_button.label}}",
+				"optibp_button_bg_color": "#EB5281",
+				"optibp_button_text_color": "#FFFFFF",
+				"read_only": false,
+				"optibp_data": {
+					"clientId": "",
+					"clientOpenSRPId": ""
+				},
+				"fields_to_use_value": [
+					"bp_systolic",
+					"bp_diastolic"
+				],
 				"relevance": {
 					"rules-engine": {
 						"ex-rules": {
@@ -1160,8 +1161,8 @@
 					"calibration": ""
 				},
 				"fields_to_use_value": [
-					"bp_systolic_optibp",
-					"bp_diastolic_optibp"
+					"bp_systolic_repeat",
+					"bp_diastolic_repeat"
 				],
 				"relevance": {
 					"rules-engine": {
