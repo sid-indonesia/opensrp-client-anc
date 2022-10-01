@@ -984,7 +984,7 @@
 				"openmrs_entity": "",
 				"openmrs_entity_id": "",
 				"type": "optibp",
-				"label": "{{anc_physical_exam.step2.record_bp_using_optibp_button.label}}",
+				"label": "{{anc_physical_exam.step3.record_bp_using_optibp_button.label}}",
 				"optibp_button_bg_color": "#EB5281",
 				"optibp_button_text_color": "#FFFFFF",
 				"read_only": false,
