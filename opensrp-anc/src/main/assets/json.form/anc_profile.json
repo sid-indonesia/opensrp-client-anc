@@ -2596,6 +2596,8 @@
 							{
 								"or": [
 									"partial",
+									"booster1",
+									"booster2",
 									"none"
 								]
 							}
