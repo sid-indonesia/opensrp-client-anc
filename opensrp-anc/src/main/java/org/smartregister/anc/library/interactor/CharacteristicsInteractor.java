@@ -1,6 +1,7 @@
 package org.smartregister.anc.library.interactor;
 
 import android.content.Context;
+import android.util.Log;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -15,7 +16,10 @@ import org.smartregister.domain.SyncStatus;
 import org.smartregister.repository.AllSettings;
 import org.smartregister.util.Utils;
 
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
+import java.util.Set;
 
 import timber.log.Timber;
 
@@ -49,18 +53,43 @@ public class CharacteristicsInteractor implements SiteCharacteristicsContract.In
             settingObject = new JSONObject(characteristic.getValue());
         }
         localSettings = settingObject.has(AllConstants.SETTINGS) ? settingObject.getJSONArray(AllConstants.SETTINGS) : null;
+
+        HashMap<String, JSONObject> cleanSettings = new HashMap<String, JSONObject>();
+
+        // Remove duplicates from current localSettings
         if (localSettings != null) {
             for (int i = 0; i < localSettings.length(); i++) {
                 JSONObject localSetting = localSettings.getJSONObject(i);
-                localSetting.put(ConstantsUtils.KeyUtils.VALUE,
-                        "1".equals(siteCharacteristicsSettingsMap.get(localSetting.getString(ConstantsUtils.KeyUtils.KEY))));
+
+                String key = String.valueOf(localSetting.get("key"));
+                Boolean value = localSetting.get("value").equals("true");
+                cleanSettings.put(key, localSetting);
             }
         }
 
-        settingObject.put(AllConstants.SETTINGS, localSettings);
+
+        // Add updates from new siteCharacteristicsSettingsMap
+        for (Map.Entry<String,String> charItem : siteCharacteristicsSettingsMap.entrySet()) {
+            String key = charItem.getKey();
+            Boolean value = charItem.getValue().equals("1");
+            JSONObject setting = cleanSettings.get(key);
+            setting.put("value", value);
+        }
+
+        // Create a JSONArray for updated settings
+        JSONArray cleanSettingsArray = new JSONArray();
+        for (Map.Entry<String,JSONObject> item : cleanSettings.entrySet()) {
+            cleanSettingsArray.put(item.getValue());
+        }
+
+        settingObject.put(AllConstants.SETTINGS, cleanSettingsArray);
+
         characteristic.setValue(settingObject.toString());
         characteristic.setKey(ConstantsUtils.PrefKeyUtils.SITE_CHARACTERISTICS);
         characteristic.setSyncStatus(SyncStatus.PENDING.name());
+
+        JSONArray sob = (JSONArray) settingObject.get("settings");
+
         getAllSettingsRepo().putSetting(characteristic);
         AncLibrary.getInstance().populateGlobalSettings();
     }
