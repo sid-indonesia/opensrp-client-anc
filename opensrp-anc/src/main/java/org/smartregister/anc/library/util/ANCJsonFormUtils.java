@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
@@ -39,6 +40,7 @@ import org.smartregister.clientandeventmodel.Event;
 import org.smartregister.clientandeventmodel.FormEntityConstants;
 import org.smartregister.domain.Photo;
 import org.smartregister.domain.ProfileImage;
+import org.smartregister.domain.ServerSetting;
 import org.smartregister.domain.form.FormLocation;
 import org.smartregister.domain.tag.FormTag;
 import org.smartregister.location.helper.LocationHelper;
@@ -746,26 +748,38 @@ public class ANCJsonFormUtils extends org.smartregister.util.JsonFormUtils {
         }
     }
 
-    public static Map<String, String> processSiteCharacteristics(String jsonString) {
+    public static Map<String, ServerSetting> processSiteCharacteristics(String jsonString) {
+
         try {
+
             Triple<Boolean, JSONObject, JSONArray> registrationFormParams = validateParameters(jsonString);
             if (!registrationFormParams.getLeft()) {
                 return null;
             }
 
-            Map<String, String> settings = new HashMap<>();
+            Map<String, ServerSetting> settings = new HashMap<>();
             JSONArray fields =
                     registrationFormParams.getMiddle().getJSONObject(ANCJsonFormUtils.STEP1).getJSONArray(ANCJsonFormUtils.FIELDS);
 
+
             for (int i = 0; i < fields.length(); i++) {
-                if (!"label".equals(fields.getJSONObject(i).getString(ConstantsUtils.KeyUtils.TYPE))) {
-                    settings.put(fields.getJSONObject(i).getString(ConstantsUtils.KeyUtils.KEY),
-                            StringUtils.isBlank(fields.getJSONObject(i).getString(ConstantsUtils.KeyUtils.VALUE)) ? "0" :
-                                    fields.getJSONObject(i).getString(ConstantsUtils.KeyUtils.VALUE));
+
+                JSONObject row = fields.getJSONObject(i);
+                if (!row.getString("type").equals("label")) {
+
+                    String key = row.getString("key");
+                    Boolean value = row.getString("value").equals("1");
+                    String label = row.getString("title");
+                    String description = row.getString("label");
+
+                    settings.put(key, new ServerSetting(key, value, label, description));
+
                 }
+
             }
 
             return settings;
+
         } catch (Exception e) {
             Timber.e(e, "JsonFormUtils --> processSiteCharacteristics");
             return null;

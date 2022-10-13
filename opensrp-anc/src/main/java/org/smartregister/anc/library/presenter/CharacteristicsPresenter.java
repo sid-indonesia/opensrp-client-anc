@@ -46,6 +46,7 @@ public class CharacteristicsPresenter implements SiteCharacteristicsContract.Pre
     @Override
     public void launchSiteCharacteristicsFormForEdit() {
         Map<String, String> settings = getSettingsMapByType(ConstantsUtils.PrefKeyUtils.SITE_CHARACTERISTICS);
+        Log.v("ASDF", String.valueOf(settings));
         getSiteCharacteristicsView().launchSiteCharacteristicsSettingsFormForEdit(settings);
     }
 
@@ -73,10 +74,11 @@ public class CharacteristicsPresenter implements SiteCharacteristicsContract.Pre
 
         getSiteCharacteristicsView().showProgressDialog(R.string.saving_dialog_title);
 
-        Map<String, String> settings = model.processSiteCharacteristics(jsonString);
+        Map<String, ServerSetting> settings = model.processSiteCharacteristics(jsonString);
         try {
 
-            interactor.saveSiteCharacteristics(settings);
+            // interactor.saveSiteCharacteristics(settings);
+            interactor.updateSiteCharacteristics(settings);
 
         } catch (Exception e) {
             Log.e(CharacteristicsPresenter.class.getCanonicalName(), e.getMessage());

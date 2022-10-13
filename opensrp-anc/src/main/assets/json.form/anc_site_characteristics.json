@@ -60,8 +60,8 @@
         "type": "label",
         "text": "{{anc_site_characteristics.step1.label_site_ipv_assess.text}}",
         "translation_text": "anc_site_characteristics.step1.label_site_ipv_assess.text",
-        "text_size": "22px",
         "text_color": "black",
+        "label_text_style": "bold",
         "v_required": {
           "value": true,
           "err": "{{anc_site_characteristics.step1.label_site_ipv_assess.v_required.err}}"
@@ -69,10 +69,11 @@
       },
       {
         "key": "site_ipv_assess",
+        "title": "Kebutuhan minimum penilaian IPV",
         "openmrs_entity_parent": "",
         "openmrs_entity": "",
         "openmrs_entity_id": "",
-        "openmrs_data_type": "select one",
+        "openmrs_data_type": "",
         "label": "{{anc_site_characteristics.step1.site_ipv_assess.label}}",
         "type": "native_radio",
         "options": [
@@ -94,13 +95,43 @@
         }
       },
       {
-        "key": "site_ultrasound",
+        "key": "site_anc_hiv",
+        "title": "Epidemi HIV umum",
         "openmrs_entity_parent": "",
         "openmrs_entity": "",
         "openmrs_entity_id": "",
-        "openmrs_data_type": "select one",
+        "openmrs_data_type": "",
+        "label": "{{anc_site_characteristics.step1.site_anc_hiv.label}}",
+        "type": "native_radio",
+        "label_text_style": "bold",
+        "options": [
+          {
+            "key": "1",
+            "text": "{{anc_site_characteristics.step1.site_anc_hiv.options.1.text}}",
+            "translation_text": "anc_site_characteristics.step1.site_anc_hiv.options.1.text"
+          },
+          {
+            "key": "0",
+            "text": "{{anc_site_characteristics.step1.site_anc_hiv.options.0.text}}",
+            "translation_text": "anc_site_characteristics.step1.site_anc_hiv.options.0.text"
+          }
+        ],
+        "value": "",
+        "v_required": {
+          "value": "false",
+          "err": "{{anc_site_characteristics.step1.site_anc_hiv.v_required.err}}"
+        }
+      },
+      {
+        "key": "site_ultrasound",
+        "title": "Ketersediaan alat USG",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "",
+        "openmrs_entity_id": "",
+        "openmrs_data_type": "",
         "type": "native_radio",
         "label": "{{anc_site_characteristics.step1.site_ultrasound.label}}",
+        "label_text_style": "bold",
         "options": [
           {
             "key": "1",
@@ -111,6 +142,34 @@
             "key": "0",
             "text": "{{anc_site_characteristics.step1.site_ultrasound.options.0.text}}",
             "translation_text": "anc_site_characteristics.step1.site_ultrasound.options.0.text"
+          }
+        ],
+        "value": "",
+        "v_required": {
+          "value": "true",
+          "err": "{{anc_site_characteristics.step1.site_ultrasound.v_required.err}}"
+        }
+      },
+      {
+        "key": "site_bp_tool",
+        "title": "Ketersediaan pengukur tekanan darah otomatis",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "",
+        "openmrs_entity_id": "",
+        "openmrs_data_type": "",
+        "type": "native_radio",
+        "label": "{{anc_site_characteristics.step1.site_bp_tool.label}}",
+        "label_text_style": "bold",
+        "options": [
+          {
+            "key": "1",
+            "text": "{{anc_site_characteristics.step1.site_bp_tool.options.1.text}}",
+            "translation_text": "anc_site_characteristics.step1.site_bp_tool.options.1.text"
+          },
+          {
+            "key": "0",
+            "text": "{{anc_site_characteristics.step1.site_bp_tool.options.0.text}}",
+            "translation_text": "anc_site_characteristics.step1.site_bp_tool.options.0.text"
           }
         ],
         "value": "",
