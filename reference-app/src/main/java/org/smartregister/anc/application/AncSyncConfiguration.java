@@ -25,7 +25,7 @@ public class AncSyncConfiguration extends SyncConfiguration {
 
     @Override
     public SyncFilter getSyncFilterParam() {
-        return SyncFilter.TEAM_ID;
+        return SyncFilter.LOCATION_ID;
     }
 
     @Override
