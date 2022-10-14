@@ -1,7 +1,7 @@
 <resources>
 
 	<!-- Application Settings -->
-	<string name="app_name">BUNDA</string>
+	<string name="app_name">BUNDA-DEV</string>
 	<string name="app_tagline">Bersinergi Untuk Dampingi Kesehatan \n Ibu dan Anak</string>
 	<string name="app_version">Versi Aplikasi: %1$s (dibuat %2$s)</string>
     <string name="form_manifest_version">Versi Rilis Form: v%1$s</string>
