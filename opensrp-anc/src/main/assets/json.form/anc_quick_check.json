@@ -58,6 +58,33 @@
     "title": "{{anc_quick_check.step1.title}}",
     "fields": [
       {
+        "key": "enc_date_label",
+        "type": "label",
+        "label_text_style": "bold",
+        "text": "{{anc_quick_check.step1.enc_date.label}}",
+        "translation_text": "anc_quick_check.step1.enc_date.labell",
+        "text_color": "#000000",
+        "v_required": {
+          "value": true,
+          "err": "{{anc_quick_check.step1.enc_date.v_required.err}}"
+        }
+      },
+      {
+        "key": "enc_date",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "",
+        "openmrs_entity_id": "",
+        "type": "date_picker",
+        "hint": "{{anc_quick_check.step1.enc_date.label}}",
+        "expanded": false,
+        "min_date": "today-49y",
+        "max_date": "today",
+        "v_required": {
+          "value": "true",
+          "err": "{{anc_quick_check.step1.enc_date.v_required.err}}"
+        }
+      },
+      {
         "key": "contact_reason",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",

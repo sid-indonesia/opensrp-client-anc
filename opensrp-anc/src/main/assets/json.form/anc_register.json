@@ -327,7 +327,7 @@
           "err": "{{anc_register.step1.phone_number.v_numeric.err}}"
         },
         "v_required": {
-          "value": "false",
+          "value": "true",
           "err": "{{anc_register.step1.phone_number.v_required.err}}"
         }
       },
