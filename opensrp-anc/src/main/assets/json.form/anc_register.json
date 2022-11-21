@@ -99,6 +99,85 @@
         "v_required": {
           "value": true,
           "err": "{{anc_register.step1.nik.v_required.err}}"
+        },
+        "relevance": {
+          "step1:no_nik": {
+            "ex-checkbox": [
+              {
+                "not": [
+                  "no_nik"
+                ]
+              }
+            ]
+          }
+        }
+      },
+      {
+        "key": "no_nik",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "",
+        "openmrs_entity_id": "",
+        "type": "check_box",
+        "options": [
+          {
+            "key": "no_nik",
+            "text": "{{anc_register.step1.no_nik.text}}",
+            "translation_text": "anc_register.step1.no_nik.text",
+            "value": false,
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "",
+            "openmrs_entity_id": "no_nik"
+          }
+        ]
+      },
+      {
+        "key": "no_nik_reason",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "165428AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "label": "{{anc_register.step1.no_nik_reason.label}}",
+        "type": "native_radio",
+        "text_color": "#000000",
+        "options": [
+          {
+            "key": "0",
+            "text": "{{anc_register.step1.no_nik_reason.option.0}}",
+            "translation_text": "anc_register.step1.no_nik_reason.option.0",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "165386AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+          },
+          {
+            "key": "1",
+            "text": "{{anc_register.step1.no_nik_reason.option.1}}",
+            "translation_text": "anc_register.step1.no_nik_reason.option.1",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "165179AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+          },
+          {
+            "key": "2",
+            "text": "{{anc_register.step1.no_nik_reason.option.2}}",
+            "translation_text": "anc_register.step1.no_nik_reason.option.2",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "{{anc_register.step1.no_nik_reason.err.v_required}}"
+        },
+        "relevance": {
+          "step1:no_nik": {
+            "ex-checkbox": [
+              {
+                "and": [
+                  "no_nik"
+                ]
+              }
+            ]
+          }
         }
       },
       {
@@ -329,6 +408,85 @@
         "v_required": {
           "value": "true",
           "err": "{{anc_register.step1.phone_number.v_required.err}}"
+        },
+        "relevance": {
+          "step1:no_phone": {
+            "ex-checkbox": [
+              {
+                "not": [
+                  "no_phone"
+                ]
+              }
+            ]
+          }
+        }
+      },
+      {
+        "key": "no_phone",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "",
+        "openmrs_entity_id": "",
+        "type": "check_box",
+        "options": [
+          {
+            "key": "no_phone",
+            "text": "{{anc_register.step1.no_phone.text}}",
+            "translation_text": "anc_register.step1.no_phone.text",
+            "value": false,
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "",
+            "openmrs_entity_id": "no_phone"
+          }
+        ]
+      },
+      {
+        "key": "no_phone_reason",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "165428AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "label": "{{anc_register.step1.no_phone_reason.label}}",
+        "type": "native_radio",
+        "text_color": "#000000",
+        "options": [
+          {
+            "key": "0",
+            "text": "{{anc_register.step1.no_phone_reason.option.0}}",
+            "translation_text": "anc_register.step1.no_phone_reason.option.0",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "165386AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+          },
+          {
+            "key": "1",
+            "text": "{{anc_register.step1.no_phone_reason.option.1}}",
+            "translation_text": "anc_register.step1.no_phone_reason.option.1",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "165179AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+          },
+          {
+            "key": "2",
+            "text": "{{anc_register.step1.no_phone_reason.option.2}}",
+            "translation_text": "anc_register.step1.no_phone_reason.option.2",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "{{anc_register.step1.no_phone_reason.err.v_required}}"
+        },
+        "relevance": {
+          "step1:no_phone": {
+            "ex-checkbox": [
+              {
+                "and": [
+                  "no_phone"
+                ]
+              }
+            ]
+          }
         }
       },
       {
