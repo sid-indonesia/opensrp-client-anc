@@ -7,6 +7,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.google.common.collect.ImmutableMap;
+import com.vijay.jsonwizard.constants.JsonFormConstants;
 import com.vijay.jsonwizard.domain.ExpansionPanelItemModel;
 import com.vijay.jsonwizard.rules.RuleConstant;
 import com.vijay.jsonwizard.utils.FormUtils;
@@ -124,17 +125,22 @@ public class ANCFormUtils extends FormUtils {
 
     private static void processRadioButtonsSpecialWidget(JSONObject widget, List<String> valueList) throws Exception {
         //Value already good for radio buttons so no keylist
-        JSONArray jsonArray = widget.getJSONArray(ANCJsonFormConstants.OPTIONS_FIELD_NAME);
+        JSONArray jsonArray = widget.getJSONArray(JsonFormConstants.OPTIONS_FIELD_NAME);
 
         for (int i = 0; i < jsonArray.length(); i++) {
 
             JSONObject jsonObject = jsonArray.getJSONObject(i);
+            String widgetValue = null;
+            if(widget.has(JsonFormConstants.VALUE))
+                widgetValue = widget.getString(JsonFormConstants.VALUE);
+            if(widgetValue != null && widgetValue.startsWith("{"))
+                widgetValue =  new JSONObject(widgetValue).getString(JsonFormConstants.VALUE);
 
-            if (widget.has(ANCJsonFormConstants.VALUE) && !TextUtils.isEmpty(widget.getString(ANCJsonFormConstants.VALUE)) &&
-                    jsonObject.getString(ANCJsonFormConstants.KEY).equals(widget.getString(ANCJsonFormConstants.VALUE))) {
+            if (widgetValue!= null && !TextUtils.isEmpty(widgetValue) &&
+                    jsonObject.getString(JsonFormConstants.KEY).equals(widgetValue)) {
 
-                if (jsonObject.has(ANCJsonFormConstants.SECONDARY_VALUE) &&
-                        !TextUtils.isEmpty(jsonObject.getString(ANCJsonFormConstants.SECONDARY_VALUE))) {
+                if (jsonObject.has(JsonFormConstants.SECONDARY_VALUE) &&
+                        !TextUtils.isEmpty(jsonObject.getString(JsonFormConstants.SECONDARY_VALUE))) {
 
                     jsonObject.put(ConstantsUtils.KeyUtils.PARENT_SECONDARY_KEY, getSecondaryKey(widget));
                     getRealSecondaryValue(jsonObject);
@@ -146,7 +152,7 @@ public class ANCFormUtils extends FormUtils {
                     break;
 
                 } else {
-                    valueList.add(jsonObject.getString(ANCJsonFormConstants.TEXT));
+                    valueList.add(jsonObject.getString(JsonFormConstants.TEXT));
                 }
             }
         }

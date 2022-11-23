@@ -39,12 +39,14 @@ import java.util.Map;
 import timber.log.Timber;
 
 import static org.smartregister.anc.library.util.ConstantsUtils.CONTACT_DATE;
+import static org.smartregister.anc.library.util.ConstantsUtils.GEST_AGE_OPENMRS;
 
 /**
  * Created by keyman 30/07/2018.
  */
 public class ContactInteractor extends BaseContactInteractor implements ContactContract.Interactor {
     private Utils utils = new Utils();
+    private String edd = null;
 
     public ContactInteractor() {
         this(new AppExecutors());
@@ -129,6 +131,9 @@ public class ContactInteractor extends BaseContactInteractor implements ContactC
 
                 addTheContactDate(baseEntityId, details);
                 updateWomanDetails(details, womanDetail);
+
+                edd = details.get(DBConstantsUtils.KeyUtils.EDD);
+
                 if (referral != null && !TextUtils.isEmpty(details.get(DBConstantsUtils.KeyUtils.EDD))) {
                     addReferralGa(baseEntityId, details);
                 }
@@ -208,7 +213,7 @@ public class ContactInteractor extends BaseContactInteractor implements ContactC
 
     private void addReferralGa(String baseEntityId, Map<String, String> details) {
         PreviousContact previousContact = preLoadPreviousContact(baseEntityId, details);
-        previousContact.setKey(ConstantsUtils.GEST_AGE_OPENMRS);
+        previousContact.setKey(GEST_AGE_OPENMRS);
         String edd = details.get(DBConstantsUtils.KeyUtils.EDD);
         previousContact.setValue(String.valueOf(Utils.getGestationAgeFromEDDate(edd)));
         AncLibrary.getInstance().getPreviousContactRepository().savePreviousContact(previousContact);
@@ -234,11 +239,20 @@ public class ContactInteractor extends BaseContactInteractor implements ContactC
     private String getCurrentContactState(String baseEntityId) throws JSONException {
         List<PreviousContact> previousContactList = getPreviousContactRepository().getPreviousContacts(baseEntityId, null);
         JSONObject stateObject = null;
+        String lastContactNo =  null;
         if (previousContactList != null) {
             stateObject = new JSONObject();
 
             for (PreviousContact previousContact : previousContactList) {
+                if(lastContactNo == null)
+                    lastContactNo = previousContact.getContactNo();
                 if(previousContact.getKey().equals(CONTACT_DATE) && stateObject.has(CONTACT_DATE))
+                    continue;
+
+                if(!lastContactNo.equals(previousContact.getContactNo()) && !stateObject.has(GEST_AGE_OPENMRS) && !TextUtils.isEmpty(edd))
+                    stateObject.put(GEST_AGE_OPENMRS,String.valueOf(Utils.getGestationAgeFromEDDate(edd)));
+
+                if(stateObject.has(previousContact.getKey()))
                     continue;
                 stateObject.put(previousContact.getKey(), previousContact.getValue());
             }

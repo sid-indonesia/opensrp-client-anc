@@ -8,6 +8,8 @@ import android.widget.TextView;
 
 import com.google.gson.reflect.TypeToken;
 import org.smartregister.anc.library.constants.ANCJsonFormConstants;
+
+import com.vijay.jsonwizard.constants.JsonFormConstants;
 import com.vijay.jsonwizard.rules.RuleConstant;
 import com.vijay.jsonwizard.utils.FormUtils;
 
@@ -653,13 +655,21 @@ public class MainContactActivity extends BaseContactActivity implements ContactC
     private void updateDefaultValues(JSONArray stepArray, int i, JSONObject fieldObject) throws JSONException {
         if (defaultValueFields.contains(fieldObject.getString(ANCJsonFormConstants.KEY))) {
 
+            String secondaryValue = null;
+
             if (!fieldObject.has(ANCJsonFormConstants.VALUE) ||
                     TextUtils.isEmpty(fieldObject.getString(ANCJsonFormConstants.VALUE))) {
 
                 String defaultKey = fieldObject.getString(ANCJsonFormConstants.KEY);
                 String mapValue = getMapValue(defaultKey);
 
+                if(fieldObject.has(ANCJsonFormConstants.KeyConstants.SECONDARY_VALUE_FIELD))
+                    secondaryValue = getMapValue(fieldObject.getString(ANCJsonFormConstants.KeyConstants.SECONDARY_VALUE_FIELD));
+
                 if (mapValue != null) {
+                    if(mapValue.startsWith("{"))
+                        fieldObject.put(JsonFormConstants.VALUE, new JSONObject(mapValue));
+                    else
                     fieldObject.put(ANCJsonFormConstants.VALUE, mapValue);
                     fieldObject.put(ANCJsonFormConstants.EDITABLE, editableFields.contains(defaultKey));
                     fieldObject.put(ANCJsonFormConstants.READ_ONLY, editableFields.contains(defaultKey));
@@ -672,6 +682,19 @@ public class MainContactActivity extends BaseContactActivity implements ContactC
 
                 for (int m = 0; m < fieldObject.getJSONArray(ANCJsonFormConstants.OPTIONS_FIELD_NAME).length(); m++) {
                     String optionValue;
+
+                    JSONObject optionsObject =  fieldObject.getJSONArray(JsonFormConstants.OPTIONS_FIELD_NAME).getJSONObject(m);
+                    if(optionsObject.has(JsonFormConstants.CONTENT_WIDGET) && secondaryValue != null)
+                    {
+                        JSONObject secondaryValueObject = new JSONObject();
+                        JSONArray  secondaryValueArray = new JSONArray();
+                        secondaryValueArray.put(secondaryValue);
+                        secondaryValueObject.put(JsonFormConstants.KEY, optionsObject.getString(JsonFormConstants.KEY));
+                        secondaryValueObject.put(JsonFormConstants.VALUES, secondaryValueArray);
+                        secondaryValueObject.put(JsonFormConstants.TYPE, optionsObject.getString(JsonFormConstants.CONTENT_WIDGET));
+                        optionsObject.put(JsonFormConstants.SECONDARY_VALUE,new JSONArray().put(secondaryValueObject));
+                    }
+
                     if (fieldObject.getJSONArray(ANCJsonFormConstants.OPTIONS_FIELD_NAME).getJSONObject(m)
                             .has(ANCJsonFormConstants.VALUE)) {
                         optionValue = fieldObject.getJSONArray(ANCJsonFormConstants.OPTIONS_FIELD_NAME).getJSONObject(m)
