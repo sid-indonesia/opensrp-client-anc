@@ -10,6 +10,7 @@ import android.os.Environment;
 import android.preference.PreferenceManager;
 import android.text.TextUtils;
 import android.text.format.DateUtils;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
 import android.widget.Button;
@@ -76,6 +77,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -438,45 +440,88 @@ public class Utils extends org.smartregister.util.Utils {
         return (new LocalDate()).toString(SQLITE_DATE_DF);
     }
 
+    /** Get ButtonAlertStatus of a client. */
     public static ButtonAlertStatus getButtonAlertStatus(Map<String, String> details, Context context, boolean isProfile) {
-        String contactStatus = details.get(DBConstantsUtils.KeyUtils.CONTACT_STATUS);
 
-        String nextContactDate = details.get(DBConstantsUtils.KeyUtils.NEXT_CONTACT_DATE);
-        String edd = details.get(DBConstantsUtils.KeyUtils.EDD);
-        String alertStatus;
-        Integer gestationAge = 0;
-        if (StringUtils.isNotBlank(edd)) {
-            gestationAge = Utils.getGestationAgeFromEDDate(edd);
-            AlertRule alertRule = new AlertRule(gestationAge, nextContactDate);
-            alertStatus =
-                    StringUtils.isNotBlank(contactStatus) && ConstantsUtils.AlertStatusUtils.ACTIVE.equals(contactStatus) ?
-                            ConstantsUtils.AlertStatusUtils.IN_PROGRESS : AncLibrary.getInstance().getAncRulesEngineHelper()
-                            .getButtonAlertStatus(alertRule, ConstantsUtils.RulesFileUtils.ALERT_RULES);
-        } else {
-            alertStatus = StringUtils.isNotBlank(contactStatus) ? ConstantsUtils.AlertStatusUtils.IN_PROGRESS : "DEAD";
+        // * Utilities
+        Date today = Calendar.getInstance().getTime();
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        String todayDateString = dateFormat.format(today);
+
+        // * Default values
+        ButtonAlertStatus buttonAlertStatus = new ButtonAlertStatus();
+        buttonAlertStatus.buttonAlertStatus = "";
+        buttonAlertStatus.nextContactDate = "";
+        buttonAlertStatus.gestationAge = 0;
+        buttonAlertStatus.nextContact = 0;
+        buttonAlertStatus.buttonText = "";
+
+        try {
+            // * Get values from client details
+            // - Raw values
+            String rawContactStatus = details.get("contact_status");
+            String rawLastContactDate = details.get("last_contact_record_date");
+            String rawNextContactDate = details.get("next_contact_date");
+            String rawNextContact = details.get("next_contact");
+            String rawEDD = details.get("edd");
+            // - Client values
+            String clientContactStatus = StringUtils.isNotBlank(rawContactStatus) ? rawContactStatus : "";
+            String clientNextContactDate = StringUtils.isNotBlank(rawNextContactDate) ? rawNextContactDate : todayDateString;
+            Integer clientNextContact = StringUtils.isNotBlank(rawNextContact) ? Integer.parseInt(rawNextContact) : 1;
+            Integer clientEDD = StringUtils.isNotBlank(rawEDD) ? Integer.parseInt(rawEDD) : 0;
+            Integer clientGestationAge = Utils.getGestationAgeFromEDDate(String.valueOf(clientEDD));
+
+            // * Check for invalid date
+            if (clientNextContactDate.contains("000")) {
+                clientNextContactDate = todayDateString;
+            }
+
+            // * Set alert rule and status
+            AlertRule alertRule = new AlertRule(clientGestationAge, clientNextContactDate);
+            String alertStatus = AncLibrary.getInstance().getAncRulesEngineHelper().getButtonAlertStatus(alertRule, ConstantsUtils.RulesFileUtils.ALERT_RULES);
+            // - The client is dead or not
+            if (!StringUtils.isNotBlank(clientContactStatus)) alertStatus = "dead";
+            else if (ConstantsUtils.AlertStatusUtils.ACTIVE.equals(clientContactStatus)) alertStatus = "in_progress";
+            // - Contact is done today
+            if (StringUtils.isNotBlank(rawLastContactDate)) {
+                long lastContactTime = dateFormat.parse(rawLastContactDate).getTime();
+                if (DateUtils.isToday(lastContactTime)) alertStatus = "today";
+            }
+
+            // * Format next contact date for UI purposes
+            clientNextContactDate = convertDateStringFormat(clientNextContactDate, "yyyy-MM-dd", "dd/MM/yyyy");
+
+            // * Generate buttonText
+            String buttonText = getDisplayTemplate(context, alertStatus, isProfile);
+            buttonText = String.format(buttonText, clientNextContact, clientNextContactDate);
+
+            // * Set the ButtonAlertStatus
+            buttonAlertStatus.buttonAlertStatus = alertStatus;
+            buttonAlertStatus.gestationAge = clientGestationAge;
+            buttonAlertStatus.nextContact = clientNextContact;
+            buttonAlertStatus.nextContactDate = clientNextContactDate;
+            buttonAlertStatus.buttonText = buttonText;
         }
 
-        ButtonAlertStatus buttonAlertStatus = new ButtonAlertStatus();
-
-        //Set text first
-        String nextContactRaw = details.get(DBConstantsUtils.KeyUtils.NEXT_CONTACT);
-        Integer nextContact = StringUtils.isNotBlank(nextContactRaw) ? Integer.parseInt(nextContactRaw) : 1;
-
-        nextContactDate =
-                StringUtils.isNotBlank(nextContactDate) ? Utils.reverseHyphenSeperatedValues(nextContactDate, "/") : null;
-
-        buttonAlertStatus.buttonText = String.format(getDisplayTemplate(context, alertStatus, isProfile), nextContact, (nextContactDate != null ? nextContactDate :
-                Utils.convertDateFormat(Calendar.getInstance().getTime(), Utils.CONTACT_DF)));
-
-        alertStatus =
-                Utils.processContactDoneToday(details.get(DBConstantsUtils.KeyUtils.LAST_CONTACT_RECORD_DATE), alertStatus);
-
-        buttonAlertStatus.buttonAlertStatus = alertStatus;
-        buttonAlertStatus.gestationAge = gestationAge;
-        buttonAlertStatus.nextContact = nextContact;
-        buttonAlertStatus.nextContactDate = nextContactDate;
+        catch (Exception e) {
+            Log.e("Utils.java", e.toString());
+        }
 
         return buttonAlertStatus;
+    }
+
+    /** Convert date string format */
+    public static String convertDateStringFormat(String dateString, String fromFormat, String toFormat) {
+        try {
+            DateFormat fromFormatter = new SimpleDateFormat(fromFormat);
+            DateFormat toFormatter = new SimpleDateFormat(toFormat);
+            Date dateValue = fromFormatter.parse(dateString);
+            return toFormatter.format(dateValue);
+        }
+        catch (Exception e) {
+            Log.e("Utils.java", e.toString());
+            return dateString;
+        }
     }
 
     public static int getGestationAgeFromEDDate(String expectedDeliveryDate) {
