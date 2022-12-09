@@ -468,8 +468,8 @@ public class Utils extends org.smartregister.util.Utils {
             String clientContactStatus = StringUtils.isNotBlank(rawContactStatus) ? rawContactStatus : "";
             String clientNextContactDate = StringUtils.isNotBlank(rawNextContactDate) ? rawNextContactDate : todayDateString;
             Integer clientNextContact = StringUtils.isNotBlank(rawNextContact) ? Integer.parseInt(rawNextContact) : 1;
-            Integer clientEDD = StringUtils.isNotBlank(rawEDD) ? Integer.parseInt(rawEDD) : 0;
-            Integer clientGestationAge = Utils.getGestationAgeFromEDDate(String.valueOf(clientEDD));
+            String clientEDD = StringUtils.isNotBlank(rawEDD) ? rawEDD : "";
+            Integer clientGestationAge = Utils.getGestationAgeFromEDDate(clientEDD);
 
             // * Check for invalid date
             if (clientNextContactDate.contains("000")) {
