@@ -72,6 +72,7 @@
 					"err": "{{anc_quick_check.step1.visit_date.v_required.err}}"
 				}
 			},
+
 			{
 				"key": "contact_reason",
 				"openmrs_entity_parent": "",

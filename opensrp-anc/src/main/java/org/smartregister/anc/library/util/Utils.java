@@ -459,6 +459,40 @@ public class Utils extends org.smartregister.util.Utils {
         }
     }
 
+    public static Boolean isVisitDateValid(String entityId, String date) {
+        Boolean isAlreadyExisted = false;
+        try {
+            JSONObject client = AncLibrary.getInstance().getEventClientRepository().getEventsByBaseEntityId(entityId);
+            JSONArray events = client.getJSONArray("events");
+            ArrayList<String> visitDates = new ArrayList<String>();
+            for (int i = 0; i < events.length(); i++) {
+                JSONObject event = events.getJSONObject(i);
+                String eventType = event.getString("eventType");
+                if (eventType.equals("anc_quick_check")) {
+                    JSONArray obs = event.getJSONArray("obs");
+                    for (int j = 0; j < obs.length(); j++) {
+                        JSONObject field = obs.getJSONObject(j);
+                        String fieldCode = field.getString("fieldCode");
+                        if (fieldCode.equals("visit_date")) {
+                            JSONArray values = field.getJSONArray("values");
+                            String visitDate = values.getString(0);
+                            if (visitDate != null) {
+                                String day = visitDate.substring(0,2);
+                                String month = visitDate.substring(3,5);
+                                String year = visitDate.substring(6,10);
+                                String visitDateString = year + "-" + month + "-" + day;
+                                if (visitDateString.equals(date)) isAlreadyExisted = true;
+                            }
+                        }
+                    }
+                }
+            }
+            return isAlreadyExisted;
+        } catch (JSONException e) {
+            return false;
+        }
+    }
+
     public static String getActualEDD(String edd, String recordDate, String visitDate) {
         try {
             LocalDateTime date_edd = LocalDateTime.parse(edd);
@@ -470,6 +504,22 @@ public class Utils extends org.smartregister.util.Utils {
             return formatter.print(date_actual);
         } catch (Exception e) {
             return null;
+        }
+    }
+
+    public static int getLastContactGA(String edd, String lastVisit) {
+        try {
+            if (!"0".equals(edd) && edd.length() > 0) {
+                LocalDate date = SQLITE_DATE_DF.withOffsetParsed().parseLocalDate(edd);
+                LocalDate lmpDate = date.minusWeeks(ConstantsUtils.DELIVERY_DATE_WEEKS);
+                LocalDate visitDate = SQLITE_DATE_DF.withOffsetParsed().parseLocalDate(lastVisit);
+                Weeks weeks = Weeks.weeksBetween(lmpDate, visitDate);
+                return weeks.getWeeks();
+            } else {
+                return 0;
+            }
+        } catch (Exception e) {
+            return 0;
         }
     }
 
@@ -986,7 +1036,7 @@ public class Utils extends org.smartregister.util.Utils {
     }
 
     /**
-     * @param receives iterated keys and values and passes them through translation in nativeform
+     * @param Receives iterated keys and values and passes them through translation in nativeform
      *                 to return a string. It checks whether the value is an array, a json object or a normal string separated by ,
      * @return
      */
@@ -1028,6 +1078,54 @@ public class Utils extends org.smartregister.util.Utils {
                 return NativeFormLangUtils.translateDatabaseString(value.trim(), AncLibrary.getInstance().getApplicationContext());
             }
             return value;
+        } catch (Exception e) {
+            e.printStackTrace();
+            Timber.e("Failed to translate String %s", e.toString());
+            return "";
+        }
+    }
+
+    public static String getFactInputValue(String input) {
+        try {
+            if (StringUtils.isNotBlank(input) && input.startsWith("[")) {
+                if (Utils.checkJsonArrayString(input)) {
+                    JSONArray jsonArray = new JSONArray(input);
+                    List<String> valueList = new ArrayList<>();
+                    for (int i = 0; i < jsonArray.length(); i++) {
+                        JSONObject object = jsonArray.optJSONObject(i);
+                        String value = object.optString(JsonFormConstants.VALUE).trim();
+                        valueList.add(value);
+                    }
+                    return valueList.size() > 1 ? String.join(",", valueList) : valueList.size() == 1 ? valueList.get(0) : "";
+                } else {
+                    return input.substring(1, input.length() - 1);
+                }
+            }
+            if (StringUtils.isNotBlank(input) && input.startsWith("{")) {
+                JSONObject attentionFlagObject = new JSONObject(input);
+                String value = attentionFlagObject.optString(JsonFormConstants.VALUE).trim();
+                return value;
+            }
+            if (StringUtils.isNotBlank(input) && input.contains(",") && input.contains(".") && input.contains(JsonFormConstants.VALUE)) {
+                List<String> attentionFlagValueArray = Arrays.asList(input.trim().split(","));
+                List<String> valueList = new ArrayList<>();
+                for (int i = 0; i < attentionFlagValueArray.size(); i++) {
+                    String value = attentionFlagValueArray.get(i).trim();
+                    valueList.add(value);
+                }
+                return valueList.size() > 1 ? String.join(",", valueList) : valueList.size() == 1 ? valueList.get(0) : "";
+            }
+            if (StringUtils.isNotBlank(input) && input.contains(".") && !input.contains(",") && input.charAt(0) != '[' && !input.contains("{") && input.contains(JsonFormConstants.TEXT)) {
+                if (input.contains("not_done")) return "not_done";
+                else if (input.contains("done")) return "done";
+                else if (input.contains("yes")) return "yes";
+                else if (input.contains("no")) return "no";
+                else if (input.contains(".text")) {
+                    String[] fragments = input.split(".");
+                    return fragments[fragments.length - 2];
+                }
+            }
+            return input;
         } catch (Exception e) {
             e.printStackTrace();
             Timber.e("Failed to translate String %s", e.toString());
