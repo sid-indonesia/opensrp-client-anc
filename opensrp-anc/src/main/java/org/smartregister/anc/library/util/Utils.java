@@ -529,28 +529,19 @@ public class Utils extends org.smartregister.util.Utils {
 
         // Encounter date
         String visitDate = getClientLastVisitDate(details.get("base_entity_id"));
+        String lastVisitDate = details.get(DBConstantsUtils.KeyUtils.LAST_VISIT_DATE);
         String lastContactRecordDate = details.get(DBConstantsUtils.KeyUtils.LAST_CONTACT_RECORD_DATE);
 
         String nextContactDate = details.get(DBConstantsUtils.KeyUtils.NEXT_CONTACT_DATE);
         String edd = details.get(DBConstantsUtils.KeyUtils.EDD);
-        String actualEdd;
-
-        // EDD
-        if (visitDate != null) {
-            actualEdd = getActualEDD(edd, lastContactRecordDate, visitDate);
-        } else {
-            actualEdd = edd;
-        }
 
         String alertStatus;
         Integer gestationAge = 0;
-        if (StringUtils.isNotBlank(actualEdd)) {
-            gestationAge = Utils.getGestationAgeFromEDDate(actualEdd);
+        if (StringUtils.isNotBlank(edd) && StringUtils.isNotBlank((contactStatus))) {
+            gestationAge = Utils.getGAFromEDDateOnVisitDate(edd, lastVisitDate != null ? lastVisitDate : visitDate);
             AlertRule alertRule = new AlertRule(gestationAge, nextContactDate);
-            alertStatus =
-                    StringUtils.isNotBlank(contactStatus) && ConstantsUtils.AlertStatusUtils.ACTIVE.equals(contactStatus) ?
-                            ConstantsUtils.AlertStatusUtils.IN_PROGRESS : AncLibrary.getInstance().getAncRulesEngineHelper()
-                            .getButtonAlertStatus(alertRule, ConstantsUtils.RulesFileUtils.ALERT_RULES);
+            if (contactStatus.equals(ConstantsUtils.AlertStatusUtils.ACTIVE)) alertStatus = ConstantsUtils.AlertStatusUtils.IN_PROGRESS;
+            else alertStatus = AncLibrary.getInstance().getAncRulesEngineHelper().getButtonAlertStatus(alertRule, ConstantsUtils.RulesFileUtils.ALERT_RULES);
         } else {
             alertStatus = StringUtils.isNotBlank(contactStatus) ? ConstantsUtils.AlertStatusUtils.IN_PROGRESS : "DEAD";
         }
@@ -587,6 +578,23 @@ public class Utils extends org.smartregister.util.Utils {
                 LocalDate date = SQLITE_DATE_DF.withOffsetParsed().parseLocalDate(expectedDeliveryDate);
                 LocalDate lmpDate = date.minusWeeks(ConstantsUtils.DELIVERY_DATE_WEEKS);
                 Weeks weeks = Weeks.weeksBetween(lmpDate, LocalDate.now());
+                return weeks.getWeeks();
+            } else {
+                return 0;
+            }
+        } catch (IllegalArgumentException e) {
+            Timber.e(e, " --> getGestationAgeFromEDDate");
+            return 0;
+        }
+    }
+
+    public static int getGAFromEDDateOnVisitDate(String expectedDeliveryDate, String visitDate) {
+        try {
+            if (!"0".equals(expectedDeliveryDate) && expectedDeliveryDate.length() > 0) {
+                LocalDate date = SQLITE_DATE_DF.withOffsetParsed().parseLocalDate(expectedDeliveryDate);
+                LocalDate visitDateLocal = SQLITE_DATE_DF.withOffsetParsed().parseLocalDate(visitDate);
+                LocalDate lmpDate = date.minusWeeks(ConstantsUtils.DELIVERY_DATE_WEEKS);
+                Weeks weeks = Weeks.weeksBetween(lmpDate, visitDateLocal);
                 return weeks.getWeeks();
             } else {
                 return 0;
