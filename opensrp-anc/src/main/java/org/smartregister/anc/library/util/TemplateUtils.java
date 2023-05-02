@@ -22,10 +22,8 @@ public class TemplateUtils {
         StringBuilder stringBuilder;
 
         try {
-            String locale = context.getResources().getConfiguration().locale.getLanguage();
-            locale = locale.equalsIgnoreCase("en") ? "" : "-" + locale;
 
-            inputStream = context.getAssets().open("template" + locale + "/" + templateName + ".json");
+            inputStream = context.getAssets().open("template" + "/" + templateName + ".json");
 
             BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream, StandardCharsets.UTF_8));
 
