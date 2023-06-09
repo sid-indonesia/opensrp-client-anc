@@ -7,6 +7,8 @@ import android.view.View;
 
 import androidx.core.util.Pair;
 
+import com.vijay.jsonwizard.rules.RulesEngineDateUtil;
+
 import org.apache.commons.lang3.tuple.Triple;
 import org.jeasy.rules.api.Facts;
 import org.json.JSONObject;
@@ -39,12 +41,14 @@ public class ProfilePresenter implements ProfileContract.Presenter, RegisterCont
     private ProfileContract.Interactor mProfileInteractor;
     private RegisterContract.Interactor mRegisterInteractor;
     private ContactInteractor contactInteractor;
+    private RulesEngineDateUtil rulesEngineDateUtil;
 
     public ProfilePresenter(ProfileContract.View profileView) {
         mProfileView = new WeakReference<>(profileView);
         mProfileInteractor = new ProfileInteractor(this);
         mRegisterInteractor = new RegisterInteractor();
         contactInteractor = new ContactInteractor();
+        rulesEngineDateUtil = new RulesEngineDateUtil();
     }
 
     @Override
@@ -150,11 +154,11 @@ public class ProfilePresenter implements ProfileContract.Presenter, RegisterCont
                 String name = client.get(DBConstantsUtils.KeyUtils.FIRST_NAME) + " " + client.get(DBConstantsUtils.KeyUtils.LAST_NAME);
                 String age = String.valueOf(Utils.getAgeFromDate(client.get(DBConstantsUtils.KeyUtils.DOB)));
                 String recordDate = client.get(DBConstantsUtils.KeyUtils.LAST_CONTACT_RECORD_DATE);
-                String lastVisit = Utils.getClientLastVisitDate(entityId);
+                String lastVisit = client.get(DBConstantsUtils.KeyUtils.LAST_VISIT_DATE);
                 String phoneNumber = client.get(DBConstantsUtils.KeyUtils.PHONE_NUMBER);
                 String nextContact = client.get(DBConstantsUtils.KeyUtils.NEXT_CONTACT);
                 Integer nextContactNo = nextContact != null ? new Integer(nextContact) : null;
-                Integer currentContactNo = (nextContactNo != null || nextContactNo >= 0) ? nextContactNo - 1 : null;
+                Integer currentContactNo = (nextContactNo != null || nextContactNo >= 2) ? nextContactNo - 1 : null;
                 // Update text in UI
                 profile.setProfileImage(entityId);
                 profile.setProfileID(ancId);
@@ -165,6 +169,12 @@ public class ProfilePresenter implements ProfileContract.Presenter, RegisterCont
 				if (recordDate != null && currentContactNo != null) {
                     String edd = client.get(DBConstantsUtils.KeyUtils.EDD);
                     String actualEdd = Utils.getActualEDD(edd, recordDate, lastVisit);
+                    Facts facts = AncLibrary.getInstance().getPreviousContactRepository().getPreviousContactFacts(entityId,"1");
+                    if(facts == null)
+                       lastVisit = Utils.getTodaysDate();
+                    else if(!recordDate.isEmpty() && lastVisit.isEmpty())
+                        lastVisit = recordDate;
+                    Log.d("record date", recordDate);
 					String ga = String.valueOf(Utils.getLastContactGA(edd, lastVisit));
 					profile.setProfileGestationAge(ga);
 					profile.setPhoneNumber(phoneNumber);

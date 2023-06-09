@@ -2,6 +2,7 @@ package org.smartregister.anc.library.helper;
 
 import android.content.Context;
 import android.text.TextUtils;
+import android.util.Log;
 
 import com.vijay.jsonwizard.constants.JsonFormConstants;
 import com.vijay.jsonwizard.rules.RuleConstant;
@@ -18,10 +19,16 @@ import org.jeasy.rules.core.RulesEngineParameters;
 import org.jeasy.rules.mvel.MVELRule;
 import org.jeasy.rules.mvel.MVELRuleFactory;
 import org.jeasy.rules.support.YamlRuleDefinitionReader;
+import org.joda.time.DateTime;
+import org.joda.time.Days;
 import org.joda.time.LocalDate;
+import org.joda.time.format.DateTimeFormat;
+import org.joda.time.format.DateTimeFormatter;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.smartregister.anc.library.AncLibrary;
+import org.smartregister.anc.library.R;
 import org.smartregister.anc.library.rule.AlertRule;
 import org.smartregister.anc.library.rule.ContactRule;
 import org.smartregister.anc.library.util.ANCFormUtils;
@@ -156,6 +163,12 @@ public class AncRulesEngineHelper extends RulesEngineHelper {
         return ga;
     }
 
+    public static String replaceTranslatedWeeks(String gestAge)
+    {
+        Context context = AncLibrary.getInstance().getApplicationContext();
+        return gestAge.replace("weeks",context.getString(R.string.weeks)).replace("days",context.getString(R.string.days));
+    }
+
     /***
      * Gets value form accordion
      * @param accordion accordion to get the value from
@@ -244,6 +257,25 @@ public class AncRulesEngineHelper extends RulesEngineHelper {
         return compareDateAgainstToday(addDuration(dateString, duration));
     }
 
+    @Override
+    public String addDuration(String dateString, String durationString) {
+        return ancAddDuration(dateString,durationString);
+    }
+
+    public  String ancAddDuration (String date , String duration)
+    {
+                String givenDate = date;
+                int daysToAdd = Integer.parseInt(duration.replace("d",""));
+                // Convert the given date string to a DateTime object
+                DateTimeFormatter formatter = DateTimeFormat.forPattern("dd-MM-yyyy");
+                DateTime dateObj = DateTime.parse(givenDate, formatter);
+                // Add days to the given date
+                DateTime newDate = dateObj.plusDays(daysToAdd);
+                // Format the new date as a string
+                String resultDate = newDate.toString(formatter);
+                return  resultDate;
+    }
+
     /**
      * Compares date against today's date
      *
@@ -263,5 +295,32 @@ public class AncRulesEngineHelper extends RulesEngineHelper {
     }
 
 
+    @Override
+    public String getWeeksAndDaysFromDays(Integer days) {
+        Context context = AncLibrary.getInstance().getApplicationContext();
+        return super.getWeeksAndDaysFromDays(days).replace("weeks",context.getString(R.string.weeks)).replace("days",context.getString(R.string.days));
+    }
 
+    public String addEncounterDate(String entityId, String visitDate)
+    {
+        Facts facts = AncLibrary.getInstance().getPreviousContactRepository().getPreviousContactFacts(entityId, "1");
+        if(facts!= null && facts.get("visit_date") != null )
+        {
+            return  facts.get("visit_date");
+        }
+        return  visitDate;
+    }
+
+    @Override
+    public long getDifferenceDays(String dateString, String dateString2) {
+
+        DateTimeFormatter formatter = DateTimeFormat.forPattern("dd-MM-yyyy");
+        // Convert the provided date string to a DateTime object
+        DateTime firstDateObject = DateTime.parse(dateString, formatter);
+        // Get the current date
+        DateTime secondDateObject = DateTime.parse(dateString2, formatter);
+        // Calculate the date difference in days
+        int dateDifference = Days.daysBetween(firstDateObject, secondDateObject).getDays();
+        return Math.abs(dateDifference);
+    }
 }
