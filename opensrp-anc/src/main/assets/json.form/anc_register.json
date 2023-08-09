@@ -141,6 +141,22 @@
 				}
 			},
 			{
+				"key": "aid",
+				"openmrs_entity_parent": "",
+				"openmrs_entity": "person_identifier",
+				"openmrs_entity_id": "aid",
+				"type": "edit_text",
+				"hint": "{{anc_register.step1.aid.hint}}",
+				"v_regex": {
+					"value": "[0-9]{16}",
+					"err": "{{anc_register.step1.uid.v_length.err}}"
+				},
+				"v_max_length": {
+					"value": "16",
+					"err": "{{anc_register.step1.uid.v_length.err}}"
+				}
+			},
+			{
 				"key": "uid_unknown",
 				"openmrs_entity_parent": "",
 				"openmrs_entity": "person_attribute",
