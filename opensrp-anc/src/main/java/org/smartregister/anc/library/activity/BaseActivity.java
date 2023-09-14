@@ -49,7 +49,7 @@ public abstract class BaseActivity extends AppCompatActivity implements SiteChar
 
     @Override
     public void launchSiteCharacteristicsSettingsForm() {
-        setDefaultLocale();
+//        setDefaultLocale();
         ANCJsonFormUtils.launchSiteCharacteristicsForm(this);
     }
 
@@ -105,8 +105,4 @@ public abstract class BaseActivity extends AppCompatActivity implements SiteChar
         }
     }
 
-    public void setDefaultLocale() {
-        LangUtils.saveLanguage(getApplication(), AppConfig.DefaultLocale.getLanguage());
-        Utils.saveLanguage(AppConfig.DefaultLocale.getLanguage());
-    }
 }

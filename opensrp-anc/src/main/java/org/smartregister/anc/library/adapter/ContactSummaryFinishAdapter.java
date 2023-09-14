@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import org.jeasy.rules.api.Facts;
@@ -13,9 +14,12 @@ import org.smartregister.anc.library.AncLibrary;
 import org.smartregister.anc.library.R;
 import org.smartregister.anc.library.domain.YamlConfig;
 import org.smartregister.anc.library.domain.YamlConfigItem;
+import org.smartregister.anc.library.util.ANCFormUtils;
 import org.smartregister.anc.library.util.Utils;
 
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Created by ndegwamartin on 04/12/2018.
@@ -56,7 +60,12 @@ public class ContactSummaryFinishAdapter extends RecyclerView.Adapter<ContactSum
                 outputBuilder.append(Utils.fillTemplate(yamlConfigItem.getTemplate(), this.facts)).append("\n\n");
             }
         }
-        String output = outputBuilder.toString();
+
+        String output = "";
+        if(mData.get(position).getGroup().equals("birth_plan_counseling"))
+            output = outputBuilder.toString();
+        else
+            output = ANCFormUtils.replaceCapitalizedAbbreviation(outputBuilder);
 
         holder.sectionDetails.setText(output);
 
@@ -72,9 +81,10 @@ public class ContactSummaryFinishAdapter extends RecyclerView.Adapter<ContactSum
 
     }
 
+
     private String getString(String key) {
         int identifier = context.getResources().getIdentifier(key, "string", context.getPackageName());
-        return context.getString(identifier);
+            return context.getString(identifier);
     }
 
     // total number of rows

@@ -12,7 +12,6 @@ import android.os.Environment;
 import android.preference.PreferenceManager;
 import android.text.TextUtils;
 import android.text.format.DateUtils;
-import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
 import android.widget.Button;
@@ -22,8 +21,6 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonParser;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;
@@ -43,8 +40,6 @@ import org.greenrobot.eventbus.EventBus;
 import org.jeasy.rules.api.Facts;
 import org.jetbrains.annotations.NotNull;
 import org.joda.time.Days;
-import org.joda.time.Duration;
-import org.joda.time.Interval;
 import org.joda.time.LocalDate;
 import org.joda.time.LocalDateTime;
 import org.joda.time.Weeks;
@@ -79,10 +74,12 @@ import org.smartregister.domain.LocationTag;
 import org.smartregister.util.JsonFormUtils;
 import org.smartregister.view.activity.DrishtiApplication;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.net.URLEncoder;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -95,9 +92,9 @@ import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.zip.GZIPOutputStream;
 
 import timber.log.Timber;
-import java.time.temporal.ChronoUnit;
 
 /**
  * Created by ndegwamartin on 14/03/2018.
@@ -590,7 +587,7 @@ public class Utils extends org.smartregister.util.Utils {
 
     public static int getGAFromEDDateOnVisitDate(String expectedDeliveryDate, String visitDate) {
         try {
-            if (!"0".equals(expectedDeliveryDate) && expectedDeliveryDate.length() > 0 && visitDate!= null) {
+            if (visitDate!=null && !"0".equals(expectedDeliveryDate) && expectedDeliveryDate.length() > 0) {
                 LocalDate date = SQLITE_DATE_DF.withOffsetParsed().parseLocalDate(expectedDeliveryDate);
                 LocalDate visitDateLocal = SQLITE_DATE_DF.withOffsetParsed().parseLocalDate(visitDate);
                 LocalDate lmpDate = date.minusWeeks(ConstantsUtils.DELIVERY_DATE_WEEKS);
@@ -1029,11 +1026,18 @@ public class Utils extends org.smartregister.util.Utils {
         return newValue;
     }
 
-    public static boolean checkJsonArrayString(String input) {
+    public static boolean checkIsJsonArrayString(String input) {
         try {
             if (StringUtils.isNotBlank(input)) {
                 JSONArray jsonArray = new JSONArray(input);
-                return jsonArray.optJSONObject(0) != null || jsonArray.optJSONObject(0).length() > 0;
+                if(jsonArray.optJSONObject(0) != null)
+                {
+                    if(jsonArray.optJSONObject(0).length() > 0)
+                    {
+                        return true;
+                    }
+                    return true;
+                }
             }
             return false;
         } catch (Exception e) {
@@ -1052,7 +1056,7 @@ public class Utils extends org.smartregister.util.Utils {
     public static String returnTranslatedStringJoinedValue(String value) {
         try {
             if (StringUtils.isNotBlank(value) && value.startsWith("[")) {
-                if (Utils.checkJsonArrayString(value)) {
+                if (Utils.checkIsJsonArrayString(value)) {
                     JSONArray jsonArray = new JSONArray(value);
                     List<String> translatedList = new ArrayList<>();
                     for (int i = 0; i < jsonArray.length(); i++) {
@@ -1089,14 +1093,14 @@ public class Utils extends org.smartregister.util.Utils {
         } catch (Exception e) {
             e.printStackTrace();
             Timber.e("Failed to translate String %s", e.toString());
-            return "";
+            return value;
         }
     }
 
     public static String getFactInputValue(String input) {
         try {
             if (StringUtils.isNotBlank(input) && input.startsWith("[")) {
-                if (Utils.checkJsonArrayString(input)) {
+                if (Utils.checkIsJsonArrayString(input)) {
                     JSONArray jsonArray = new JSONArray(input);
                     List<String> valueList = new ArrayList<>();
                     for (int i = 0; i < jsonArray.length(); i++) {
@@ -1136,8 +1140,8 @@ public class Utils extends org.smartregister.util.Utils {
             return input;
         } catch (Exception e) {
             e.printStackTrace();
-            Timber.e("Failed to translate String %s", e.toString());
-            return "";
+            Timber.e(e);
+            return input;
         }
     }
 
@@ -1346,5 +1350,21 @@ public class Utils extends org.smartregister.util.Utils {
             }
         }
         return jsonString;
+    }
+
+    public static String compress(String str, String inEncoding) {
+        if (str == null || str.length() == 0) {
+            return str;
+        }
+        try {
+            ByteArrayOutputStream out = new ByteArrayOutputStream();
+            GZIPOutputStream gzip = new GZIPOutputStream(out);
+            gzip.write(str.getBytes(inEncoding));
+            gzip.close();
+            return URLEncoder.encode(out.toString("ISO-8859-1"), "UTF-8");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }

@@ -32,6 +32,7 @@ import org.smartregister.anc.library.util.FilePathUtils;
 import org.smartregister.anc.library.util.Utils;
 import org.yaml.snakeyaml.Yaml;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
@@ -679,6 +680,8 @@ public class MainContactActivity extends BaseContactActivity implements ContactC
             String optibpButtonKey = fieldObject.getString(JsonFormConstants.KEY).equals(ANCJsonFormConstants.KeyConstants.OPTIBP_BUTTON) ? ANCJsonFormConstants.KeyConstants.OPTIBP_BUTTON : ANCJsonFormConstants.KeyConstants.OPTIBP_BUTTON_SECOND;
             String previousContactBpValue = getMapValue(optibpButtonKey) == null ? "" : getMapValue(optibpButtonKey);
             JSONObject optiBPData = FormUtils.createOptiBPDataObject(baseEntityId, womanOpenSRPId, previousContactBpValue);
+            String calibrationString = Utils.compress(optiBPData.getString("calibration"),"UTF-8");
+            optiBPData.put("calibration",calibrationString);
             fieldObject.put(JsonFormConstants.OptibpConstants.OPTIBP_KEY_DATA, optiBPData);
         }
     }

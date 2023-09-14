@@ -3,6 +3,7 @@ package org.smartregister.anc.library.activity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -55,6 +56,7 @@ import org.smartregister.configurableviews.model.Field;
 import org.smartregister.domain.FetchStatus;
 import org.smartregister.helper.BottomNavigationHelper;
 import org.smartregister.listener.BottomNavigationListener;
+import org.smartregister.repository.AllSharedPreferences;
 import org.smartregister.util.LangUtils;
 import org.smartregister.view.activity.BaseRegisterActivity;
 import org.smartregister.view.fragment.BaseRegisterFragment;
@@ -83,19 +85,12 @@ public class BaseHomeRegisterActivity extends BaseRegisterActivity implements Re
     private String advancedSearchQrText = "";
     private HashMap<String, String> advancedSearchFormData = new HashMap<>();
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        if (savedInstanceState == null) {
-            setDefaultLocale();
-        }
         super.onCreate(null);
         recordBirthAlertDialog = createAlertDialog();
         createAttentionFlagsAlertDialog();
-    }
-
-    public void setDefaultLocale() {
-        LangUtils.saveLanguage(getApplication(), AppConfig.DefaultLocale.getLanguage());
-        Utils.saveLanguage(AppConfig.DefaultLocale.getLanguage());
     }
 
     public void setLocale(Locale locale) {
@@ -300,6 +295,21 @@ public class BaseHomeRegisterActivity extends BaseRegisterActivity implements Re
             switchToFragment(BaseRegisterActivity.LIBRARY_POSITION);
             setSelectedBottomBarMenuItem(org.smartregister.R.id.action_library);
         }
+        checkLanguage();
+    }
+
+    private void checkLanguage()
+    {
+        AllSharedPreferences allSharedPreferences = new AllSharedPreferences(PreferenceManager.getDefaultSharedPreferences(getApplicationContext()));
+        String current = allSharedPreferences.fetchLanguagePreference();
+        Locale currenLocale = getApplicationContext().getResources().getConfiguration().locale;
+        if(!currenLocale.getLanguage().equals(current))
+        {
+            LangUtils.setAppLocale(getApplicationContext(),current);
+            AncLibrary.getInstance().notifyAppContextChange();
+            recreate();
+        }
+
     }
 
     @Override

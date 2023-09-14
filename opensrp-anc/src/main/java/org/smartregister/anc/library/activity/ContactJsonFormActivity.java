@@ -95,9 +95,8 @@ public class ContactJsonFormActivity extends FormConfigurationJsonFormActivity {
                     try {
                         Facts facts = AncLibrary.getInstance().getPreviousContactRepository().getPreviousContactFacts(entityId, "1");
                         String visit_date = facts.get("visit_date");
-                        Log.d("visit number of the contact", visitDate);
-                        Log.d("visit date", visit_date);
                         globalValues.put("entity_id",entityId);
+                        if(visit_date != null)
                         globalValues.put("first_encounter_date", visit_date);
                     }
                     catch (Exception e)
@@ -108,8 +107,6 @@ public class ContactJsonFormActivity extends FormConfigurationJsonFormActivity {
                 }
                 globalValues.put("entity_id", entityId);
             }
-            Log.v("PAMPAM", globalValues.toString());
-
             rulesEngineFactory = new AncRulesEngineFactory(this, globalValues, getmJSONObject());
             setRulesEngineFactory(rulesEngineFactory);
 

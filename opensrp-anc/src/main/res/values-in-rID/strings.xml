@@ -32,7 +32,7 @@
     <!-- ============== -->
 
     <string name="login_text">Login</string>
-    <string name="logout_text">Logout</string>
+    <string name="logout_text">Keluar</string>
     <string name="loggin_in_dialog_title">Login</string>
     <string name="loggin_in_dialog_message">Harap Tunggu</string>
     <string name="login_failed_dialog_title">Login Gagal</string>
@@ -156,7 +156,7 @@
     <!-- QR Code Scan Feature -->
     <!-- ==================== -->
 
-    <string name="scan_qr_code_title">Scan QR Code</string>
+    <string name="scan_qr_code_title">Pindai Kode QR</string>
     <string name="permission_camera_rationale">Akses ke kamera diperlukan untuk deteksi.</string>
     <string name="no_camera_permission">Aplikasi ini tidak dapat dijalankan karena tidak memiliki izin untuk mengakses kamera. Aplikasi sekarang akan ditutup.</string>
     <string name="low_storage_error">Ketergantungan detektor wajah tidak dapat diunduh karena penyimpanan perangkat tinggal sedikit.</string>
@@ -343,7 +343,7 @@
 
     <string name="action_logout">Logout</string>
     <string name="action_language">Bahasa</string>
-    <string name="scan_qr_code">Scan QR code</string>
+    <string name="scan_qr_code">Pindai Kode QR</string>
     <string name="complete">Selesai</string>
     <string name="remove_from_register">Hapus dari Daftar</string>
     <string name="dismiss">Batalkan</string>
@@ -482,12 +482,12 @@
     <string name="shortness_of_breath">Sesak napas</string>
     <string name="tiredness">Kelelahan</string>
     <string name="trauma">Trauma</string>
-    <string name="bleeding">Pendarahan vagina</string>
+    <string name="bleeding">Perdarahan pervaginam</string>
     <string name="visual_disturbance">Gangguan penglihatan</string>
     <string name="complaint_other_specify">Lainnya</string>
     <string name="danger_signs"><font fgcolor="black">Tanda bahaya </font><font fgcolor="red">*</font></string>
     <string name="danger_none">Tidak ada</string>
-    <string name="danger_bleeding">Pendarahan melalui vagina</string>
+    <string name="danger_bleeding">Perdarahan pervaginam</string>
     <string name="central_cyanosis">Sianosis sentral</string>
     <string name="convulsing">Kejang</string>
     <string name="danger_fever">Demam</string>
@@ -584,8 +584,8 @@
     <string name="record">Rekam</string>
     <string name="undo">Undo</string>
     <string name="save_and_finish">Simpan + Selesaikan</string>
-    <string name="contact_recorded_today">Kunjungan %1$d\n dilakukan hari ini</string>
-    <string name="contact_recorded_today_no_break">Kunjungan %1$d &#183; dilakukan hari ini</string>
+    <string name="contact_recorded_today">Kunjungan %1$d\n Dilakukan Hari Ini</string>
+    <string name="contact_recorded_today_no_break">Kunjungan %1$d &#183; Dilakukan Hari Ini</string>
     <string name="continue_contact">Lanjutkan Kunjungan %1$d</string>
     <string name="finalizing_contact">Finalisasi kunjungan %1$d</string>
     <string name="summarizing_contact_number">Menyimpulkan kunjungan %1$d</string>
@@ -660,6 +660,18 @@
     <string name="deworming_and_malaria_prophylaxis">Obat Cacing and Profilaksis Malaria</string>
     <string name="calcium_supplementation">Suplemen Kalsium</string>
     <string name="vitamin_a_supplementation">Suplemen Vitamin A</string>
+    <string name="seven_day_antibiotic">Antibiotik tujuh hari untuk ASB</string>
+    <string name="magnesium_and_calcium_for_cramps">Farmakologis untuk mual dan muntah yang terus-menerus</string>
+    <string name="pharmacologicals_for_persistent_nausea_and_vomiting">Magnesium dan kalsium untuk kram kaki yang terus-menerus</string>
+    <string name="antacids_for_persistent_heartburn">Antasida untuk mulas yang terus-menerus</string>
+    <string name="erythromycin_or_azithromycin">Eritromisin 500 mg per oral empat kali sehari selama 14 hari atau Azitromisin 2 g sekali per oral.</string>
+    <string name="penicillin_for_syphilis">Penisilin untuk sifilis</string>
+    <string name="iron_and_folic_acid_for_anaemia">Zat besi &amp; asam folat untuk pengobatan anemia</string>
+    <string name="asprin_for_pre_eclampsia_risk">Aspirin untuk risiko pre-eklamsia</string>
+    <string name="prep">Profilaksis pra pajanan HIV (PrEP)</string>
+    <string name="iron_and_folic_supplement">Suplemen zat besi &amp; asam folat</string>
+    <string name="albendazole_mebendazole_for_deworming">Albendazole/mebendazole untuk obat cacing</string>
+    <string name="sulfadoxine_pyrimethamine_for_malaria_prevention">Sulfadoksin-pirimetamin (SP) untuk pencegahan malaria</string>
 
 
     <!-- Page: Me -->
@@ -713,6 +725,7 @@
     <string name="contact_summary">Ringkasan Kunjungan</string>
     <string name="navigation_drawer_close">Tutup navigasi</string>
     <string name="navigation_drawer_open">Buka navigasi</string>
+    <string name= "ga">UK</string>
 
 
     <!-- Needs Refactoring -->
@@ -841,5 +854,14 @@
     <string name="age">Umur</string>
     <string name="weeks">minggu</string>
     <string name= "days">hari</string>
+    <string name="english_language">Inggris</string>
+    <string name="bahasa_indonesia_language">Bahasa</string>
+    <string name="years">Tahun</string>
+    <string name="label_weeks">Minggu</string>
+    <string name="mother_age">Usia Ibu</string>
+    <string name="gestational_age">Usia Kehamilan</string>
+    <string name="gestational_age_abrv">UK</string>
+    <string name="gestational_age_warning">UK lebih dari 42 minggu, harus konsultasi ke dokter.</string>
+    <string name="didukung_oleh">Didukung oleh</string>
 
 </resources>
