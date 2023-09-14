@@ -112,9 +112,10 @@
 			{
 				"key": "uid",
 				"openmrs_entity_parent": "",
-				"openmrs_entity": "person_identifier",
+				"openmrs_entity": "person_attribute",
 				"openmrs_entity_id": "uid",
 				"type": "edit_text",
+				"edit_type":"password",
 				"hint": "{{anc_register.step1.uid.hint}}",
 				"v_numeric": {
 					"value": "true",
@@ -143,7 +144,7 @@
 			{
 				"key": "uid_repeat",
 				"openmrs_entity_parent": "",
-				"openmrs_entity": "person_identifier",
+				"openmrs_entity": "person_attribute",
 				"openmrs_entity_id": "uid_repeat",
 				"type": "edit_text",
 				"edit_type":"password",
@@ -238,95 +239,27 @@
 					}
 				}
 			},
-			{
-				"key": "ssn",
-				"openmrs_entity_parent": "",
-				"openmrs_entity": "person_identifier",
-				"openmrs_entity_id": "ssn",
-				"type": "edit_text",
-				"hint": "{{anc_register.step1.ssn.hint}}",
-				"v_numeric": {
-					"value": "true",
-					"err": "{{anc_register.step1.ssn.v_numeric.err}}"
-				},
-				"v_regex": {
-					"value": "^$|[0-9]{11,13}",
-					"err": "{{anc_register.step1.ssn.v_length.err}}"
-				},
-				"v_max_length": {
-					"value": "13",
-					"err": "{{anc_register.step1.ssn.v_length.err}}"
-				}
-			},
-			{
-				"key": "ssn_repeat",
-				"openmrs_entity_parent": "",
-				"openmrs_entity": "person_identifier",
-				"openmrs_entity_id": "ssn_repeat",
-				"type": "edit_text",
-				"edit_type":"password",
-				"hint": "{{anc_register.step1.ssn.hint}}",
-				"relevance": {
-					"rules-engine": {
-						"ex-rules": {
-							"rules-file": "anc_register_relevance.yml"
-						}
-					}
-				},
-				"v_equals": {
-					"value": "step1:ssn",
-					"err": "{{anc_register.step1.uid_repeat_field_dont_match.text}}"
-				},
-				"v_numeric": {
-					"value": "true",
-					"err": "{{anc_register.step1.ssn.v_numeric.err}}"
-				},
-				"v_regex": {
-					"value": "^$|[0-9]{11,13}",
-					"err": "{{anc_register.step1.ssn.v_length.err}}"
-				},
-				"v_max_length": {
-					"value": "13",
-					"err": "{{anc_register.step1.ssn.v_length.err}}"
-				},
-				"v_required": {
-					"value": "true",
-					"err": "{{anc_register.step1.ssn.v_required.err}}"
-				}
-			},
-
 
 			{
 				"key": "additional_id_type",
 				"openmrs_entity_parent": "",
-				"openmrs_entity": "person_identifier",
+				"openmrs_entity": "person_attribute",
 				"openmrs_entity_id": "additional_id_type",
 				"type": "edit_text",
 				"hint": "{{anc_register.step1.additional_id_type.hint}}",
-				"v_numeric": {
-					"value": "true",
-					"err": "{{anc_register.step1.uid.v_numeric.err}}"
-				},
 				"v_required": {
 					"value": "true",
 					"err": "{{anc_register.step1.additional_id_type.v_required.err}}"
-				},
-				"v_regex": {
-					"value": "[0-9]{10}",
-					"err": "{{anc_register.step1.additional_id_type.v_length.err}}"
-				},
-				"v_max_length": {
-					"value": "10",
-					"err": "{{anc_register.step1.additional_id_type.v_length.err}}"
 				}
 			},
 
 			{
 				"key": "additional_id_number",
 				"openmrs_entity_parent": "",
-				"openmrs_entity": "person_identifier",
+				"openmrs_entity": "person_attribute",
 				"openmrs_entity_id": "additional_id_number",
 				"type": "edit_text",
+				"edit_type":"password",
 				"hint": "{{anc_register.step1.additional_id_number.hint}}",
 				"v_numeric": {
 					"value": "true",
@@ -349,7 +282,7 @@
 			{
 				"key": "additional_id_number_repeat",
 				"openmrs_entity_parent": "",
-				"openmrs_entity": "person_identifier",
+				"openmrs_entity": "person_attribute",
 				"openmrs_entity_id": "additional_id_number_repeat",
 				"type": "edit_text",
 				"edit_type":"password",
@@ -406,6 +339,63 @@
 				"v_required": {
 					"value": "true",
 					"err": "{{anc_register.step1.ssn_status.v_required.err}}"
+				}
+			},
+			{
+				"key": "ssn",
+				"openmrs_entity_parent": "",
+				"openmrs_entity": "person_attribute",
+				"openmrs_entity_id": "ssn",
+				"type": "edit_text",
+				"edit_type":"password",
+				"hint": "{{anc_register.step1.ssn.hint}}",
+				"v_numeric": {
+					"value": "true",
+					"err": "{{anc_register.step1.ssn.v_numeric.err}}"
+				},
+				"v_regex": {
+					"value": "^$|[0-9]{11,13}",
+					"err": "{{anc_register.step1.ssn.v_length.err}}"
+				},
+				"v_max_length": {
+					"value": "13",
+					"err": "{{anc_register.step1.ssn.v_length.err}}"
+				}
+			},
+			{
+				"key": "ssn_repeat",
+				"openmrs_entity_parent": "",
+				"openmrs_entity": "person_attribute",
+				"openmrs_entity_id": "ssn_repeat",
+				"type": "edit_text",
+				"edit_type":"password",
+				"hint": "{{anc_register.step1.ssn.hint}}",
+				"relevance": {
+					"rules-engine": {
+						"ex-rules": {
+							"rules-file": "anc_register_relevance.yml"
+						}
+					}
+				},
+				"v_equals": {
+					"value": "step1:ssn",
+					"err": "{{anc_register.step1.uid_repeat_field_dont_match.text}}"
+				},
+				"v_numeric": {
+					"value": "true",
+					"err": "{{anc_register.step1.ssn.v_numeric.err}}"
+				},
+				"v_regex": {
+					"value": "^$|[0-9]{11,13}",
+					"err": "{{anc_register.step1.ssn.v_length.err}}"
+				},
+				"v_max_length": {
+					"value": "13",
+					"err": "{{anc_register.step1.ssn.v_length.err}}"
+				},
+				"v_required": {
+					"value": "true",
+					"err": "{{anc_register.step1.ssn.v_required.err}}"
 				}
 			},
 			{
@@ -581,6 +571,7 @@
 				"openmrs_entity": "person_attribute",
 				"openmrs_entity_id": "phone_number",
 				"type": "edit_text",
+				"edit_type":"password",
 				"hint": "{{anc_register.step1.phone_number.hint}}",
 				"v_numeric": {
 					"value": "true",
@@ -610,21 +601,21 @@
 				"type": "edit_text",
 				"edit_type":"password",
 				"hint": "{{anc_register.step1.phone_number.hint}}",
-				"v_equals": {
-					"value": "step1:phone_number",
-					"err": "{{anc_register.step1.uid_repeat_field_dont_match.text}}"
-				},
 				"v_numeric": {
 					"value": "true",
 					"err": "{{anc_register.step1.phone_number.v_numeric.err}}"
 				},
-				"v_required": {
-					"value": "true",
+				"v_regex": {
+					"value": "^$|[0-9]{1,12}",
 					"err": "{{anc_register.step1.phone_number.v_required.err}}"
 				},
 				"v_max_length": {
 					"value": "12",
 					"err": "{{anc_register.step1.phone_number.v_max_length.err}}"
+				},
+				"v_equals": {
+					"value": "step1:phone_number",
+					"err": "{{anc_register.step1.uid_repeat_field_dont_match.text}}"
 				},
 				"relevance": {
 					"rules-engine": {
@@ -634,6 +625,7 @@
 					}
 				}
 			},
+
 			{
 				"key": "phone_number_unknown",
 				"openmrs_entity_parent": "",

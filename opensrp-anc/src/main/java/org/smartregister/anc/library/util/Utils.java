@@ -74,10 +74,12 @@ import org.smartregister.domain.LocationTag;
 import org.smartregister.util.JsonFormUtils;
 import org.smartregister.view.activity.DrishtiApplication;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.net.URLEncoder;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -90,6 +92,7 @@ import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.zip.GZIPOutputStream;
 
 import timber.log.Timber;
 
@@ -1027,7 +1030,14 @@ public class Utils extends org.smartregister.util.Utils {
         try {
             if (StringUtils.isNotBlank(input)) {
                 JSONArray jsonArray = new JSONArray(input);
-                return jsonArray.optJSONObject(0) != null || jsonArray.optJSONObject(0).length() > 0;
+                if(jsonArray.optJSONObject(0) != null)
+                {
+                    if(jsonArray.optJSONObject(0).length() > 0)
+                    {
+                        return true;
+                    }
+                    return true;
+                }
             }
             return false;
         } catch (Exception e) {
@@ -1083,7 +1093,7 @@ public class Utils extends org.smartregister.util.Utils {
         } catch (Exception e) {
             e.printStackTrace();
             Timber.e("Failed to translate String %s", e.toString());
-            return "";
+            return value;
         }
     }
 
@@ -1130,8 +1140,8 @@ public class Utils extends org.smartregister.util.Utils {
             return input;
         } catch (Exception e) {
             e.printStackTrace();
-            Timber.e("Failed to translate String %s", e.toString());
-            return "";
+            Timber.e(e);
+            return input;
         }
     }
 
@@ -1340,5 +1350,21 @@ public class Utils extends org.smartregister.util.Utils {
             }
         }
         return jsonString;
+    }
+
+    public static String compress(String str, String inEncoding) {
+        if (str == null || str.length() == 0) {
+            return str;
+        }
+        try {
+            ByteArrayOutputStream out = new ByteArrayOutputStream();
+            GZIPOutputStream gzip = new GZIPOutputStream(out);
+            gzip.write(str.getBytes(inEncoding));
+            gzip.close();
+            return URLEncoder.encode(out.toString("ISO-8859-1"), "UTF-8");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }
