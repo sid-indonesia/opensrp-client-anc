@@ -270,11 +270,11 @@
 					"err": "{{anc_register.step1.additional_id_number.v_required.err}}"
 				},
 				"v_regex": {
-					"value": "[0-9]{9}",
+					"value": "[0-9]{10}",
 					"err": "{{anc_register.step1.additional_id_number.v_length.err}}"
 				},
 				"v_max_length": {
-					"value": "9",
+					"value": "10",
 					"err": "{{anc_register.step1.additional_id_number.v_length.err}}"
 				}
 			},

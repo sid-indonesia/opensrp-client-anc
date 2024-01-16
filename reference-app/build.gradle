@@ -12,14 +12,14 @@ buildscript {
         classpath 'org.kt3k.gradle.plugin:coveralls-gradle-plugin:2.8.3'
         classpath 'com.google.gms:google-services:4.4.0'
         classpath 'com.google.firebase:firebase-crashlytics-gradle:2.9.9'
-        classpath 'org.smartregister:gradle-jarjar-plugin:1.0.0-SNAPSHOT'
+        classpath 'ru.tinkoff.gradle:jarjar:1.1.0'
     }
 }
 
 apply plugin: 'com.android.application'
 apply plugin: 'jacoco'
 apply plugin: 'com.google.gms.google-services'
-apply plugin: 'org.smartregister.gradle.jarjar'
+apply plugin: 'ru.tinkoff.gradle.jarjar'
 apply plugin: 'com.google.firebase.crashlytics'
 apply plugin: 'com.google.firebase.firebase-perf'
 apply from: '../properties.gradle'
@@ -384,7 +384,7 @@ task jacocoTestReport(type: JacocoReport, dependsOn: ['testDebugUnitTest', 'crea
 }
 
 
-jarJar {
-    // Dependencies and related JarJar rules
-    remove = ['fhir-model-4.8.3.jar': 'com.ibm.fhir.model.visitor.CopyingVisitor*']
-}
+//jarJar {
+//    // Dependencies and related JarJar rules
+//    //remove = ['fhir-model-4.8.3.jar': 'com.ibm.fhir.model.visitor.CopyingVisitor*']
+//}
