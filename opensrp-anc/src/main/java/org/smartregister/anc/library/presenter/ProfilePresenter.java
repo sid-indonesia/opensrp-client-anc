@@ -9,6 +9,7 @@ import androidx.core.util.Pair;
 
 import com.vijay.jsonwizard.rules.RulesEngineDateUtil;
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.tuple.Triple;
 import org.jeasy.rules.api.Facts;
 import org.json.JSONObject;
@@ -172,9 +173,9 @@ public class ProfilePresenter implements ProfileContract.Presenter, RegisterCont
                     Facts facts = AncLibrary.getInstance().getPreviousContactRepository().getPreviousContactFacts(entityId,"1");
                     if(facts == null)
                        lastVisit = Utils.getTodaysDate();
-                    else if(!recordDate.isEmpty() && lastVisit.isEmpty())
+                    else if(!recordDate.isEmpty() && StringUtils.isBlank(lastVisit))
                         lastVisit = recordDate;
-                    Log.d("record date", recordDate);
+                    Timber.d("record date %s", recordDate);
 					String ga = String.valueOf(Utils.getLastContactGA(edd, lastVisit));
 					profile.setProfileGestationAge(ga);
 					profile.setPhoneNumber(phoneNumber);
