@@ -360,4 +360,19 @@ public class AncRulesEngineHelper extends RulesEngineHelper {
         int dateDifference = Days.daysBetween(firstDateObject, secondDateObject).getDays();
         return Math.abs(dateDifference);
     }
+
+    public long getSignedDifferenceDays(String dateString, String dateString2) {
+
+        DateTimeFormatter formatter = DateTimeFormat.forPattern("dd-MM-yyyy");
+        // Convert the provided date string to a DateTime object
+        DateTime firstDateObject = DateTime.parse(dateString, formatter);
+        // Get the current date
+        DateTime secondDateObject = DateTime.parse(dateString2, formatter);
+        // Calculate the date difference in days
+        int dateDifference = 0;
+        if(firstDateObject.getMillis() < secondDateObject.getMillis()){
+           dateDifference =  Days.daysBetween(secondDateObject, firstDateObject).getDays();
+        } else dateDifference = Math.abs(Days.daysBetween(firstDateObject, secondDateObject).getDays());
+        return dateDifference;
+    }
 }
