@@ -76,6 +76,7 @@ public class ContactSummaryPresenter
     @Override
     public void onUpcomingContactsFetched(List<ContactSummaryModel> upcomingContacts, Integer lastContact) {
         if ((upcomingContacts == null || upcomingContacts.isEmpty()) && lastContact >= 0) {
+            getView().updateRecordedContact(1);
             return;
         }
         this.upcomingContacts.clear();
