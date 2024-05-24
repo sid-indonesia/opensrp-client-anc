@@ -453,8 +453,9 @@ public class ANCFormUtils extends FormUtils {
                 int startPos = StringUtils.indexOf(parentsValue.toLowerCase(), ConstantsUtils.OTHER);
                 int endPos = StringUtils.indexOf(parentsValue.toLowerCase(), ",", startPos);
 
-                String newValue = parentsValue.replace(StringUtils.substring(parentsValue,
-                        startPos, endPos != -1 ? endPos : parentsValue.length()), expansionPanelItem.getSelectedValues());
+//                String newValue = parentsValue.replace(StringUtils.substring(parentsValue,
+//                        startPos, endPos != -1 ? endPos : parentsValue.length()), expansionPanelItem.getSelectedValues());
+                String newValue   = parentsValue +" "+ expansionPanelItem.getSelectedValues();
                 facts.put(parentKey, newValue);
             }
         }
@@ -867,7 +868,18 @@ public class ANCFormUtils extends FormUtils {
     @NonNull
     public static String replaceCapitalizedAbbreviation(StringBuilder outputBuilder) {
         String output = outputBuilder.toString();
-
+        if(output.contains("Sma"))
+        {
+            output = output.replace("Sma","SMA");
+        }
+        else if (output.contains("TT immune dose") || output.contains("Dosis imunisasi TT"))
+        {
+            output = output.replace("Tt","TT");
+        }
+        else if (output.contains(","))
+        {
+           output = output.replace(",",", ");
+        }
         String regexString = null;
         String replacementString = null;
         HashMap<String, String> replacementsMap = getReplacementsMap();
@@ -889,7 +901,6 @@ public class ANCFormUtils extends FormUtils {
         map.put("(?i)Hiv", " HIV");
         map.put("(?i)dmpa-im", " DMPA-IM");
         map.put("(?i)dmpa-sc", " DMPA-SC");
-        map.put("(?i)sma", " SMA");
         map.put("(?i)smp", " SMP");
         map.put("(?i)pns", " PNS");
         map.put("(?i)arv", " ARV");
